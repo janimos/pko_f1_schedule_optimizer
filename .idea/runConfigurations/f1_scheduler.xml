@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="f1_scheduler" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="Formula1_Scheduler" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.lu.df.formula1.SpringBootApp" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

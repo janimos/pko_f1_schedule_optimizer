@@ -1,0 +1,42 @@
+[
+  {
+    "Name": "Bahrain Grand Prix",
+    "Location": "Bahrain International Circuit, Sakhir, Bahrain",
+    "Latitude": "26",
+    "Longitude": "50",
+    "Week": 1,
+    "Attendance": [99500, 100250, 95600, 94300, 98750]
+  },
+  {
+    "Name": "Miami Grand Prix",
+    "Location": "Miami International Autodrome, Miami, Florida, USA",
+    "Latitude": "25",
+    "Longitude": "-80",
+    "Week": 2,
+    "Attendance": [250000, 270000, 260000, 275000, 265000]
+  },
+  {
+    "Name": "British Grand Prix",
+    "Location": "Silverstone Circuit, Silverstone, United Kingdom",
+    "Latitude": "52",
+    "Longitude": "-1",
+    "Week": 3,
+    "Attendance": [265000, 390000, 480000, 475000, 455000]
+  },
+  {
+    "Name": "Italian Grand Prix",
+    "Location": "Monza Circuit, Monza, Italy",
+    "Latitude": "45",
+    "Longitude": "9",
+    "Week": 4,
+    "Attendance": [275000, 250000, 310000, 305000, 320000]
+  },
+  {
+    "Name": "Japanese Grand Prix",
+    "Location": "Suzuka International Racing Course, Suzuka, Japan",
+    "Latitude": "34",
+    "Longitude": "136",
+    "Week": 5,
+    "Attendance": [75000, 150000, 175000, 195000, 200000]
+  }
+]

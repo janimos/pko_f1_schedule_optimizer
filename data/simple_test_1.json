@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Azerbaijan Grand Prix",
+    "Location": "Baku City Circuit, Baku, Azerbaijan",
+    "Latitude": "40",
+    "Longitude": "49",
+    "Week": 1,
+    "Attendance": [85000, 83500, 86500]
+  },
+  {
+    "Name": "Monaco Grand Prix",
+    "Location": "Circuit de Monaco, Monte Carlo, Monaco",
+    "Latitude": "43",
+    "Longitude": "7",
+    "Week": 2,
+    "Attendance": [190000, 200000, 185000]
+  },
+  {
+    "Name": "Belgian Grand Prix",
+    "Location": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
+    "Latitude": "50",
+    "Longitude": "5",
+    "Week": 3,
+    "Attendance": [ 375000, 360000, 380000]
+  }
+]

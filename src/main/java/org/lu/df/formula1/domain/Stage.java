@@ -5,11 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Stage {
     private String name;
 
+    private String locationName;
+
     private Location location;
 
-    private double[] attendance = new double[37];
+    private List<Double> attendance = new ArrayList<>();
 }

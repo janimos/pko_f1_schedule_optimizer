@@ -31,11 +31,12 @@ public class RoutingSolution {
     @PlanningScore
     private HardSoftScore score;
 
-    @PlanningEntityCollectionProperty
+
+    @ProblemFactCollectionProperty
     @ValueRangeProvider
     private List<Stage> stageList = new ArrayList<>();
 
-    @ProblemFactCollectionProperty
+    @PlanningEntityCollectionProperty
     @ValueRangeProvider
     private List<Schedule> scheduleList = new ArrayList<>();
 
@@ -51,9 +52,13 @@ public class RoutingSolution {
 
         List<Stage> stages = mapper.readValue(jsonContent, new TypeReference<List<Stage>>() {});
 
+        Schedule schedule = new Schedule();
+        schedule.setName("S1");
+
         RoutingSolution problem = new RoutingSolution();
         problem.setSolutionId("P1");
         problem.getStageList().addAll(stages);
+        problem.getScheduleList().add(schedule);
 
         return problem;
     }

@@ -27,18 +27,17 @@ public class RoutingSolution {
     private static final Logger LOGGER = LoggerFactory.getLogger(RoutingSolution.class);
 
     private String solutionId;
+
     @PlanningScore
     private HardSoftScore score;
 
     @PlanningEntityCollectionProperty
+    @ValueRangeProvider
     private List<Stage> stageList = new ArrayList<>();
 
     @ProblemFactCollectionProperty
     @ValueRangeProvider
     private List<Schedule> scheduleList = new ArrayList<>();
-
-    @ProblemFactCollectionProperty
-    private List<Location> locationList = new ArrayList<>();
 
     public void printData(){
         this.getStageList().forEach(stage -> {
@@ -53,6 +52,7 @@ public class RoutingSolution {
         List<Stage> stages = mapper.readValue(jsonContent, new TypeReference<List<Stage>>() {});
 
         RoutingSolution problem = new RoutingSolution();
+        problem.setSolutionId("P1");
         problem.getStageList().addAll(stages);
 
         return problem;

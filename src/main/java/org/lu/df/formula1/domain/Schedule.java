@@ -16,18 +16,18 @@ import java.util.List;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Schedule {
 
+    private Location headquarters = new Location(
+            "2 St. James's Market, London, U.K.",
+            51.0,
+            0.0
+    );
+
     private String name;
 
     @PlanningListVariable
     private List<Stage> stages = new ArrayList<>();
 
     private Double income;
-
-    private Location headquarters = new Location(
-            "2 St. James's Market, London, U.K.",
-            51.0,
-            0.0
-    );
 
     // Calculate total costs from traveling distance
     public Double getTotalCost() {

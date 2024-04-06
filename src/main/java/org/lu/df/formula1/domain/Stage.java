@@ -30,6 +30,9 @@ public class Stage {
 
     private Integer week;
 
+    @InverseRelationShadowVariable(sourceVariableName = "stages")
+    private Schedule schedule;
+
     @JsonIgnore
     @NextElementShadowVariable(sourceVariableName = "stages")
     private Stage next;

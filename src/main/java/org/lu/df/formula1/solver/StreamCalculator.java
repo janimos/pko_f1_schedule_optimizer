@@ -15,13 +15,6 @@ public class StreamCalculator implements ConstraintProvider {
         };
     }
 
-    /*public Constraint everyVisit(ConstraintFactory constraintFactory) {
-        return constraintFactory
-                .forEach(Stage.class)
-                .penalize(HardSoftScore.ONE_SOFT, stage -> 1)
-                .asConstraint("everyVisit");
-    }*/
-
     public Constraint totalDistance(ConstraintFactory constraintFactory) {
         return constraintFactory
                 .forEach(Schedule.class)

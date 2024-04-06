@@ -7,6 +7,7 @@ import org.lu.df.formula1.domain.Location;
 import org.lu.df.formula1.domain.Stage;
 import org.lu.df.formula1.domain.Schedule;
 import org.lu.df.formula1.domain.RoutingSolution;
+
 public class ScoreCalculator implements EasyScoreCalculator<RoutingSolution, HardSoftScore> {
     @Override
     public HardSoftScore calculateScore(RoutingSolution routingSolution){

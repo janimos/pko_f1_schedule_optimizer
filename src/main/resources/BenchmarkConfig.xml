@@ -9,7 +9,6 @@
             <!-- Define the model -->
             <solutionClass>org.lu.df.formula1.domain.RoutingSolution</solutionClass>
             <entityClass>org.lu.df.formula1.domain.Stage</entityClass>
-            <entityClass>org.lu.df.formula1.domain.Schedule</entityClass>
 
             <!-- Define the score function -->
             <scoreDirectorFactory>

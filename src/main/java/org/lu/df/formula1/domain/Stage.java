@@ -34,15 +34,12 @@ public class Stage {
     @PlanningVariable(valueRangeProviderRefs = "weekRange")
     private Integer week;
 
-    @InverseRelationShadowVariable(sourceVariableName = "stages")
-    private Schedule schedule;
-
     @JsonIgnore
-    @NextElementShadowVariable(sourceVariableName = "stages")
+    @NextElementShadowVariable(sourceVariableName = "week")
     private Stage next;
 
     @JsonIgnore
-    @PreviousElementShadowVariable(sourceVariableName = "stages")
+    @PreviousElementShadowVariable(sourceVariableName = "week")
     private Stage previous;
 
     @Override

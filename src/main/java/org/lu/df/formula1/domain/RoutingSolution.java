@@ -35,15 +35,21 @@ public class RoutingSolution {
 
     @ProblemFactCollectionProperty
     @ValueRangeProvider
-    private List<Stage> stageList = new ArrayList<>();
+    private List<Location> locationList = new ArrayList<>();
 
     @PlanningEntityCollectionProperty
     @ValueRangeProvider
-    private List<Schedule> scheduleList = new ArrayList<>();
+    private List<Stage> stageList = new ArrayList<>();
 
     private int startWeek;
 
     private int endWeek;
+
+    private Location headquarters = new Location(
+            "2 St. James's Market, London, U.K.",
+            51.0,
+            0.0
+    );
 
     @ValueRangeProvider(id = "weekRange")
     public CountableValueRange<Integer> getWeekRange() {
@@ -63,14 +69,35 @@ public class RoutingSolution {
 
         List<Stage> stages = mapper.readValue(jsonContent, new TypeReference<List<Stage>>() {});
 
-        Schedule schedule = new Schedule();
-        schedule.setName("S1");
-
         RoutingSolution problem = new RoutingSolution();
         problem.setSolutionId("P1");
         problem.getStageList().addAll(stages);
-        problem.getScheduleList().add(schedule);
 
         return problem;
+    }
+
+    // Calculate total costs from traveling distance
+    public Double getTotalCost() {
+        Double totalCost = 0.0;
+        Location previousLocation = this.getHeadquarters();
+
+        for (Stage stage: this.stageList){
+            totalCost += previousLocation.distanceTo(stage.getLocation());
+            previousLocation = stage.getLocation();
+        }
+
+        totalCost += previousLocation.distanceTo(this.getHeadquarters());
+
+        return totalCost;
+    }
+
+    public Double getTotalIncome() {
+        Double income = 0.0;
+
+        for (Stage stage : this.stageList) {
+            income += stage.getAttendance().get(stage.getWeek());
+        }
+
+        return income;
     }
 }

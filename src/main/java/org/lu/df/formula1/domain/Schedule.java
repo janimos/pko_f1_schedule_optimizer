@@ -43,4 +43,14 @@ public class Schedule {
 
         return totalCost;
     }
+
+    public Double getTotalIncome() {
+        Double income = 0.0;
+
+        for (Stage stage : this.getStages()) {
+            income += stage.getAttendance().get(stage.getWeek());
+        }
+
+        return income;
+    }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver xmlns="https://timefold.ai/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://timefold.ai/xsd/solver https://timefold.ai/xsd/solver/solver.xsd">
+
+    <environmentMode>REPRODUCIBLE</environmentMode>
+
+    <!-- Define the model -->
+    <solutionClass>org.lu.df.formula1.domain.RoutingSolution</solutionClass>
+    <entityClass>org.lu.df.formula1.domain.Stage</entityClass>
+    <entityClass>org.lu.df.formula1.domain.Schedule</entityClass>
+
+    <!-- Define the score function -->
+    <scoreDirectorFactory>
+        <constraintProviderClass>org.lu.df.formula1.solver.StreamCalculator</constraintProviderClass>
+    </scoreDirectorFactory>
+
+    <!-- Configure the optimization algorithms (optional) -->
+    <!-- Configure the optimization algorithms (optional) -->
+    <termination>
+        <secondsSpentLimit>10</secondsSpentLimit>
+    </termination>
+
+    <constructionHeuristic />
+
+    <localSearch>
+        <subListChangeMoveSelector />
+        <acceptor>
+            <valueTabuSize>2</valueTabuSize>
+        </acceptor>
+        <forager>
+            <acceptedCountLimit>1000</acceptedCountLimit>
+        </forager>
+    </localSearch>
+
+</solver>

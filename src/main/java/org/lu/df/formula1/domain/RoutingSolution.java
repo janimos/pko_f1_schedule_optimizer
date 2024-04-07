@@ -1,5 +1,7 @@
 package org.lu.df.formula1.domain;
 
+import ai.timefold.solver.core.api.domain.valuerange.CountableValueRange;
+import ai.timefold.solver.core.api.domain.valuerange.ValueRangeFactory;
 import org.lu.df.formula1.utilities.JsonUtilities;
 
 import ai.timefold.solver.core.api.domain.solution.PlanningEntityCollectionProperty;
@@ -31,7 +33,6 @@ public class RoutingSolution {
     @PlanningScore
     private HardSoftScore score;
 
-
     @ProblemFactCollectionProperty
     @ValueRangeProvider
     private List<Stage> stageList = new ArrayList<>();
@@ -39,6 +40,16 @@ public class RoutingSolution {
     @PlanningEntityCollectionProperty
     @ValueRangeProvider
     private List<Schedule> scheduleList = new ArrayList<>();
+
+    private int startWeek;
+
+    private int endWeek;
+
+    @ValueRangeProvider(id = "weekRange")
+    public CountableValueRange<Integer> getWeekRange() {
+        // Example: If weeks range from 1 to 52
+        return ValueRangeFactory.createIntValueRange(this.startWeek, this.endWeek);
+    }
 
     public void printData(){
         this.getStageList().forEach(stage -> {

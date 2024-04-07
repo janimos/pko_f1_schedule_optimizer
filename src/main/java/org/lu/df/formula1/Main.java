@@ -25,16 +25,14 @@ public class Main {
         String testFilePath = "data/simple_test_1.json";
         RoutingSolution problem = RoutingSolution.getDataFromJson(testFilePath);
 
+        problem.setStartWeek(0);
+        problem.setEndWeek(3);
+
+        //LOGGER.info(String.valueOf(problem.getWeekRange()));
+
         problem.printData();
 
-        SolverFactory<RoutingSolution> solverFactory = SolverFactory.create(
-                new SolverConfig()
-                        .withSolutionClass(RoutingSolution.class)
-                        .withEntityClasses(Stage.class, Schedule.class)
-                        .withConstraintProviderClass(StreamCalculator.class)
-                        .withTerminationConfig( new TerminationConfig()
-                                .withSecondsSpentLimit(10L))
-        );
+        SolverFactory<RoutingSolution> solverFactory = SolverFactory.createFromXmlResource("SolverConfig.xml");
 
         Solver<RoutingSolution> solver = solverFactory.buildSolver();
         RoutingSolution solution = solver.solve(problem);

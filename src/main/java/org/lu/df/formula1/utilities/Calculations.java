@@ -8,31 +8,24 @@ import java.util.List;
 public class Calculations {
 
     // Calculate total costs from traveling distance
-    public static Double getTotalCost(List<Stage> stages) {
-        Double totalCost = 0.0;
-        Location previousLocation = GlobalConstants.headquarters;
+    public static Double getStageCost(Stage stage) {
+        Double travelCost = 0.0;
+        Location previousLocation;
 
-        for (Stage stage : stages) {
-            totalCost += previousLocation.distanceTo(stage.getLocation());
-            previousLocation = stage.getLocation();
+        if (stage.getPrevious() == null) {
+            previousLocation = GlobalConstants.headquarters;
+            travelCost = previousLocation.distanceTo(stage.getLocation());
+        } else if (stage.getNext() != null) {
+            travelCost = stage.getPrevious().getLocation().distanceTo(stage.getLocation());
+        } else {
+            travelCost = stage.getPrevious().getLocation().distanceTo(stage.getLocation());
+            travelCost += stage.getLocation().distanceTo(GlobalConstants.headquarters);
         }
 
-        totalCost += previousLocation.distanceTo(GlobalConstants.headquarters);
-
-        return totalCost;
+        return travelCost;
     }
 
-    public static Double getTotalIncome(List<Stage> stages) {
-        Double totalIncome = 0.0;
-
-        for (Stage stage : stages) {
-            totalIncome += getStageIncome(stage);
-        }
-
-        return totalIncome;
-    }
-
-    private static Double getStageIncome(Stage stage){
+    public static Double getStageIncome(Stage stage){
         return stage.getAttendance().get(stage.getWeek());
     }
 }

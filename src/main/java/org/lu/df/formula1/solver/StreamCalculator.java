@@ -22,12 +22,12 @@ public class StreamCalculator implements ConstraintProvider {
 
     public Constraint costIncomeDifferenceConstraint(ConstraintFactory constraintFactory) {
         return constraintFactory
-                .forEach(RoutingSolution.class)
-                .impact(HardSoftScore.ONE_HARD, solution -> {
-                    Double totalIncome = Calculations.getTotalIncome(solution.getStageList());
-                    Double totalCosts = Calculations.getTotalCost(solution.getStageList());
+                .forEach(Stage.class)
+                .impact(HardSoftScore.ONE_HARD, stage -> {
+                    Double stageIncome = Calculations.getStageIncome(stage);
+                    Double stageCost = Calculations.getStageCost(stage);
 
-                    return (int) Math.round(totalIncome - totalCosts);
+                    return (int) Math.round(stageIncome - stageCost);
                 })
                 .asConstraint("costIncomeDifferenceConstraint");
     }

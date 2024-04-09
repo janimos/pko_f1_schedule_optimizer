@@ -36,6 +36,7 @@ public class Main {
 
         LOGGER.info(scoreExplanation.getSummary());
 
+        solution.reorderSchedule();
         solution.printData();
 
         LOGGER.info("End!");

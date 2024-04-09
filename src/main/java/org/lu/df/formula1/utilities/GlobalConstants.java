@@ -11,6 +11,8 @@ public class GlobalConstants {
 
     public static final int weekCounter = 9;
 
+    public static final Double priceDelimiter = Math.pow(10, 6);
+
     // Data source: ticket prices for Formula 1 2023 season schedule, average
     public static final Double averagePrice = 487.87;
 

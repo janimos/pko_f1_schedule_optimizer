@@ -66,7 +66,7 @@ public class StreamCalculator implements ConstraintProvider {
         return constraintFactory
                 .forEach(Stage.class)
                 .filter(stage -> stage.getNext() != null && stage.getWeek() >= stage.getNext().getWeek())
-                .penalize(HardSoftScore.ONE_HARD, stage -> (int) Math.round(stage.getAttendance().get(stage.getWeek()) * GlobalConstants.averagePrice)) // Penalize if a stage is scheduled in the same week or after its "next" stage
+                .penalize(HardSoftScore.ONE_HARD, stage -> (int) Math.round((stage.getAttendance().get(stage.getWeek()) * GlobalConstants.averagePrice) / GlobalConstants.priceDelimiter)) // Penalize if a stage is scheduled in the same week or after its "next" stage
                 .asConstraint("stageSequenceConstraint");
     }
 }

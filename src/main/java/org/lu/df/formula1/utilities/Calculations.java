@@ -20,10 +20,17 @@ public class Calculations {
             travelDistance += stage.getLocation().distanceTo(GlobalConstants.headquarters);
         }
 
-        return travelDistance * (GlobalConstants.pricePerKilometer + GlobalConstants.emissionsPricePerKilometer());
+        return (travelDistance * (GlobalConstants.pricePerKilometer + GlobalConstants.emissionsPricePerKilometer())) / GlobalConstants.priceDelimiter;
     }
 
-    public static Double getStageIncome(Stage stage){
-        return stage.getAttendance().get(stage.getWeek()) * GlobalConstants.averagePrice;
+    public static Double getStageIncome(Stage stage) {
+        return (stage.getAttendance().get(stage.getWeek()) * GlobalConstants.averagePrice) / GlobalConstants.priceDelimiter;
+    }
+
+    public static Double getFinalIncome(Stage stage) {
+        Double stageIncome = getStageIncome(stage);
+        Double stageCost = getTravelCost(stage);
+
+        return (stageIncome - stageCost) / GlobalConstants.priceDelimiter;
     }
 }

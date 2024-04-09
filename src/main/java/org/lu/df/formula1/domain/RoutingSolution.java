@@ -2,6 +2,7 @@ package org.lu.df.formula1.domain;
 
 import ai.timefold.solver.core.api.domain.valuerange.CountableValueRange;
 import ai.timefold.solver.core.api.domain.valuerange.ValueRangeFactory;
+import org.lu.df.formula1.utilities.Calculations;
 import org.lu.df.formula1.utilities.JsonUtilities;
 
 import ai.timefold.solver.core.api.domain.solution.PlanningEntityCollectionProperty;
@@ -21,6 +22,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,8 +57,14 @@ public class RoutingSolution {
     public void printData(){
         this.getStageList().forEach(stage -> {
             LOGGER.info(stage.getName() + " at " + stage.getLocation().getAddress());
-            LOGGER.info("[ Planned week: " + stage.getWeek() + " ]");
+            LOGGER.info("[ Planned week: " + stage.getWeek() + " ]\t[ Planned income: " + Calculations.getStageIncome(stage) + " ]\n");
         });
+
+        Double income = 0.0;
+        for (Stage stage: this.getStageList()) {
+            income += Calculations.getStageIncome(stage);
+        }
+        LOGGER.info("Planned total income: " + income);
     }
 
     public static RoutingSolution getDataFromJson(String filePath) throws JsonProcessingException {
@@ -73,4 +82,12 @@ public class RoutingSolution {
         return problem;
     }
 
+    public void reorderSchedule() {
+        Collections.sort(this.getStageList(), new Comparator<Stage>() {
+            @Override
+            public int compare(Stage o1, Stage o2) {
+                return o1.getWeek().compareTo(o2.getWeek());
+            }
+        });
+    }
 }

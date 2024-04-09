@@ -6,7 +6,7 @@
       "latitude": "40",
       "longitude": "49"
     },
-    "week": 1,
+    "week": 0,
     "attendance": [85000, 83500, 86500]
   },
   {
@@ -16,7 +16,7 @@
       "latitude": "43",
       "longitude": "7"
     },
-    "week": 2,
+    "week": 1,
     "attendance": [190000, 200000, 185000]
   },
   {
@@ -26,7 +26,7 @@
       "latitude": "50",
       "longitude": "5"
     },
-    "week": 3,
+    "week": 2,
     "attendance": [375000, 360000, 380000]
   }
 ]

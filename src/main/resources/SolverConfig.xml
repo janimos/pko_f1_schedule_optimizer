@@ -22,7 +22,7 @@
     <constructionHeuristic />
 
     <localSearch>
-        <subListChangeMoveSelector />
+        <changeMoveSelector />
         <acceptor>
             <valueTabuSize>2</valueTabuSize>
         </acceptor>

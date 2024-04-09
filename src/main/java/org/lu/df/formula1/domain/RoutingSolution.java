@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @PlanningSolution
 @Getter @Setter @NoArgsConstructor
@@ -34,7 +35,6 @@ public class RoutingSolution {
     private HardSoftScore score;
 
     @ProblemFactCollectionProperty
-    @ValueRangeProvider
     private List<Location> locationList = new ArrayList<>();
 
     @PlanningEntityCollectionProperty
@@ -44,12 +44,6 @@ public class RoutingSolution {
     private int startWeek;
 
     private int endWeek;
-
-    private Location headquarters = new Location(
-            "2 St. James's Market, London, U.K.",
-            51.0,
-            0.0
-    );
 
     @ValueRangeProvider(id = "weekRange")
     public CountableValueRange<Integer> getWeekRange() {
@@ -68,13 +62,14 @@ public class RoutingSolution {
         ObjectMapper mapper = new ObjectMapper();
 
         List<Stage> stages = mapper.readValue(jsonContent, new TypeReference<List<Stage>>() {});
+        List<Location> locations = stages.stream().map(Stage::getLocation).distinct().toList();
 
         RoutingSolution problem = new RoutingSolution();
         problem.setSolutionId("P1");
         problem.getStageList().addAll(stages);
+        problem.getLocationList().addAll(locations);
 
         return problem;
     }
-
 
 }

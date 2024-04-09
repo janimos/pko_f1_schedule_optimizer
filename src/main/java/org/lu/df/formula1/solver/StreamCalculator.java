@@ -7,6 +7,7 @@ import ai.timefold.solver.core.api.score.stream.ConstraintProvider;
 import ai.timefold.solver.core.api.score.stream.Joiners;
 import org.lu.df.formula1.domain.Stage;
 import org.lu.df.formula1.utilities.Calculations;
+import org.lu.df.formula1.utilities.GlobalConstants;
 
 public class StreamCalculator implements ConstraintProvider {
     @Override
@@ -26,7 +27,7 @@ public class StreamCalculator implements ConstraintProvider {
                     Double stageIncome = Calculations.getStageIncome(stage);
                     Double stageCost = Calculations.getTravelCost(stage);
 
-                    return (int) Math.round(stageIncome - stageCost);
+                    return (int) Math.round((stageIncome - stageCost) / stage.getAttendance().get(stage.getWeek()));
                 })
                 .asConstraint("costIncomeDifferenceConstraint");
     }
@@ -49,7 +50,15 @@ public class StreamCalculator implements ConstraintProvider {
                         )
                 )
                 .penalize(HardSoftScore.ONE_HARD,
-                        (stage1, stage2) -> Math.abs(stage1.getWeek() - stage2.getWeek()) < 1 ? 1: 3)
+                        (stage1, stage2) -> {
+                            Double lostIncome = 0.0;
+                            if (stage1.getAttendance().get(stage1.getWeek()) > stage2.getAttendance().get(stage2.getWeek())) {
+                                lostIncome = Calculations.getStageIncome(stage1);
+                            } else {
+                                lostIncome = Calculations.getStageIncome(stage2);
+                            }
+                            return (int) Math.abs(lostIncome);
+                        })
                 .asConstraint("weekDifferenceConstraint");
     }
 
@@ -57,7 +66,7 @@ public class StreamCalculator implements ConstraintProvider {
         return constraintFactory
                 .forEach(Stage.class)
                 .filter(stage -> stage.getNext() != null && stage.getWeek() >= stage.getNext().getWeek())
-                .penalize(HardSoftScore.ONE_HARD, stage -> 1) // Penalize if a stage is scheduled in the same week or after its "next" stage
+                .penalize(HardSoftScore.ONE_HARD, stage -> (int) Math.round(stage.getAttendance().get(stage.getWeek()) * GlobalConstants.averagePrice)) // Penalize if a stage is scheduled in the same week or after its "next" stage
                 .asConstraint("stageSequenceConstraint");
     }
 }

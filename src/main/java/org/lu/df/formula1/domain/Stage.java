@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.lu.df.formula1.solver.StageChainingListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +33,13 @@ public class Stage {
     private Integer week;
 
     @JsonIgnore
+    @CustomShadowVariable(variableListenerClass = StageChainingListener.class,
+            sources = {@PlanningVariableReference(variableName = "week")})
     private Stage next;
 
     @JsonIgnore
+    @CustomShadowVariable(variableListenerClass = StageChainingListener.class,
+            sources = {@PlanningVariableReference(variableName = "week")})
     private Stage previous;
 
     @Override

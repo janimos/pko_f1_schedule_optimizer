@@ -76,28 +76,5 @@ public class RoutingSolution {
         return problem;
     }
 
-    // Calculate total costs from traveling distance
-    public Double getTotalCost() {
-        Double totalCost = 0.0;
-        Location previousLocation = this.getHeadquarters();
 
-        for (Stage stage: this.stageList){
-            totalCost += previousLocation.distanceTo(stage.getLocation());
-            previousLocation = stage.getLocation();
-        }
-
-        totalCost += previousLocation.distanceTo(this.getHeadquarters());
-
-        return totalCost;
-    }
-
-    public Double getTotalIncome() {
-        Double income = 0.0;
-
-        for (Stage stage : this.stageList) {
-            income += stage.getAttendance().get(stage.getWeek());
-        }
-
-        return income;
-    }
 }

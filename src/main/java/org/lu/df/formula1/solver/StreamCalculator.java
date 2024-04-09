@@ -7,42 +7,37 @@ import ai.timefold.solver.core.api.score.stream.ConstraintProvider;
 import ai.timefold.solver.core.api.score.stream.Joiners;
 import org.lu.df.formula1.domain.RoutingSolution;
 import org.lu.df.formula1.domain.Stage;
+import org.lu.df.formula1.utilities.Calculations;
 
 public class StreamCalculator implements ConstraintProvider {
     @Override
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[] {
-                totalCost(constraintFactory),
-                totalIncome(constraintFactory),
-                uniqueWeeks(constraintFactory),
+                costIncomeDifferenceConstraint(constraintFactory),
+                uniqueWeeksConstraint(constraintFactory),
                 weekDifferenceConstraint(constraintFactory),
+                stageSequenceConstraint(constraintFactory),
         };
     }
 
-    public Constraint totalCost(ConstraintFactory constraintFactory) {
-        return constraintFactory
-                .forEach(Stage.class)
-                .filter(stage -> stage.getNext() != null)
-                .penalize(HardSoftScore.ONE_SOFT,
-                        stage -> (int) Math.round(stage.getLocation().distanceTo(stage.getNext().getLocation()))
-                )
-                .asConstraint("totalCost");
-    }
-
-    public Constraint totalIncome(ConstraintFactory constraintFactory) {
+    public Constraint costIncomeDifferenceConstraint(ConstraintFactory constraintFactory) {
         return constraintFactory
                 .forEach(RoutingSolution.class)
-                .filter(schedule -> schedule.getTotalIncome() > schedule.getTotalCost())
-                .penalize(HardSoftScore.ONE_HARD)
-                .asConstraint("totalIncome");
+                .impact(HardSoftScore.ONE_HARD, solution -> {
+                    Double totalIncome = Calculations.getTotalIncome(solution.getStageList());
+                    Double totalCosts = Calculations.getTotalCost(solution.getStageList());
+
+                    return (int) Math.round(totalIncome - totalCosts);
+                })
+                .asConstraint("costIncomeDifferenceConstraint");
     }
 
-    public Constraint uniqueWeeks(ConstraintFactory constraintFactory) {
+    public Constraint uniqueWeeksConstraint(ConstraintFactory constraintFactory) {
         return constraintFactory
                 .forEachUniquePair(Stage.class,
                         Joiners.equal(Stage::getWeek))
                 .penalize(HardSoftScore.ONE_HARD)
-                .asConstraint("uniqueWeeks");
+                .asConstraint("uniqueWeeksConstraint");
     }
 
     public Constraint weekDifferenceConstraint(ConstraintFactory constraintFactory) {
@@ -56,6 +51,14 @@ public class StreamCalculator implements ConstraintProvider {
                 )
                 .penalize(HardSoftScore.ONE_HARD,
                         (stage1, stage2) -> Math.abs(stage1.getWeek() - stage2.getWeek()) < 1 ? 1: 3)
-                .asConstraint("weekDifference");
+                .asConstraint("weekDifferenceConstraint");
+    }
+
+    public Constraint stageSequenceConstraint(ConstraintFactory constraintFactory) {
+        return constraintFactory
+                .forEach(Stage.class)
+                .filter(stage -> stage.getNext() != null && stage.getWeek() >= stage.getNext().getWeek())
+                .penalize(HardSoftScore.ONE_HARD, stage -> 1) // Penalize if a stage is scheduled in the same week or after its "next" stage
+                .asConstraint("stageSequenceConstraint");
     }
 }

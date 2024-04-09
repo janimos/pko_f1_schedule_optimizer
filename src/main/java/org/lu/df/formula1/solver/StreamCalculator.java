@@ -5,7 +5,6 @@ import ai.timefold.solver.core.api.score.stream.Constraint;
 import ai.timefold.solver.core.api.score.stream.ConstraintFactory;
 import ai.timefold.solver.core.api.score.stream.ConstraintProvider;
 import ai.timefold.solver.core.api.score.stream.Joiners;
-import org.lu.df.formula1.domain.RoutingSolution;
 import org.lu.df.formula1.domain.Stage;
 import org.lu.df.formula1.utilities.Calculations;
 
@@ -25,7 +24,7 @@ public class StreamCalculator implements ConstraintProvider {
                 .forEach(Stage.class)
                 .impact(HardSoftScore.ONE_HARD, stage -> {
                     Double stageIncome = Calculations.getStageIncome(stage);
-                    Double stageCost = Calculations.getStageCost(stage);
+                    Double stageCost = Calculations.getTravelCost(stage);
 
                     return (int) Math.round(stageIncome - stageCost);
                 })

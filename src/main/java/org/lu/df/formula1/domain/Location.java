@@ -18,10 +18,30 @@ public class Location {
     @JsonProperty("longitude")
     private Double longitude;
 
-    public Double distanceTo (Location location){
+    public Double simpleDistanceTo (Location location){
         return Math.sqrt(
             Math.pow(this.latitude - location.latitude, 2) +
             Math.pow(this.longitude - location.longitude, 2)
         );
+    }
+
+    public Double distanceTo (Location location){
+        final Double R = 6371.0;
+
+        Double lat1 = Math.toRadians(this.latitude);
+        Double lon1 = Math.toRadians(this.longitude);
+        Double lat2 = Math.toRadians(location.latitude);
+        Double lon2 = Math.toRadians(location.longitude);
+
+        Double diffLat = lat2 - lat1;
+        Double diffLon = lon2 - lon1;
+
+        Double a = Math.pow(Math.sin(diffLat / 2), 2)
+                + Math.cos(lat1) * Math.cos(lat2)
+                * Math.pow(Math.sin(diffLon / 2), 2);
+
+        Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return R * c;
     }
 }

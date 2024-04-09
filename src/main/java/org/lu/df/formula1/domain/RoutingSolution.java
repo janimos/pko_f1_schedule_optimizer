@@ -54,6 +54,7 @@ public class RoutingSolution {
     public void printData(){
         this.getStageList().forEach(stage -> {
             LOGGER.info(stage.getName() + " at " + stage.getLocation().getAddress());
+            LOGGER.info("[ Planned week: " + stage.getWeek() + " ]");
         });
     }
 

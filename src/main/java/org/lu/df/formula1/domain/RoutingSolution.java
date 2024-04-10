@@ -74,6 +74,22 @@ public class RoutingSolution {
         List<Stage> stages = mapper.readValue(jsonContent, new TypeReference<List<Stage>>() {});
         List<Location> locations = stages.stream().map(Stage::getLocation).distinct().toList();
 
+        // Assuming the stages are already sorted by week in the JSON file.
+        // If not, you should sort them here based on the week field.
+        for (int i = 0; i < stages.size(); i++) {
+            Stage currentStage = stages.get(i);
+
+            // Set the previous stage unless it's the first stage
+            if (i > 0) {
+                currentStage.setPrevious(stages.get(i - 1));
+            }
+
+            // Set the next stage unless it's the last stage
+            if (i < stages.size() - 1) {
+                currentStage.setNext(stages.get(i + 1));
+            }
+        }
+
         RoutingSolution problem = new RoutingSolution();
         problem.setSolutionId("P1");
         problem.getStageList().addAll(stages);

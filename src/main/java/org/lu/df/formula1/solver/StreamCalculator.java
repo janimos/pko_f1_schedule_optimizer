@@ -36,7 +36,7 @@ public class StreamCalculator implements ConstraintProvider {
         return constraintFactory
                 .forEachUniquePair(Stage.class,
                         Joiners.equal(Stage::getWeek))
-                .penalize(HardSoftScore.ONE_HARD)
+                .penalize(HardSoftScore.ofHard(500))
                 .asConstraint("uniqueWeeksConstraint");
     }
 

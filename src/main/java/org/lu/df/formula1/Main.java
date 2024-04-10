@@ -16,11 +16,11 @@ public class Main {
 
         LOGGER.info("Start!");
 
-        String testFilePath = "data/simple_test_2.json";
+        String testFilePath = "data/simple_test_3.json";
         RoutingSolution problem = RoutingSolution.getDataFromJson(testFilePath);
 
         problem.setStartWeek(0);
-        problem.setEndWeek(5);
+        problem.setEndWeek(10);
 
         //LOGGER.info(String.valueOf(problem.getWeekRange()));
 

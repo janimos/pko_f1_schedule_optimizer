@@ -1,47 +1,60 @@
 
-var chart_scoreCalculationSpeedSummaryChart_894db = new Chart(document.getElementById('chart_scoreCalculationSpeedSummaryChart_894db'), {
-    type: 'line',
+var chart_worstScoreDifferencePercentageSummaryChart0_16596 = new Chart(document.getElementById('chart_worstScoreDifferencePercentageSummaryChart0_16596'), {
+    type: 'bar',
     data: {
         labels: [
-            
+            'problem_5_5'
         ],
         datasets: [
-                    ]
+            {
+                  label: 'Tabu 5 500 (favorite)',
+                  grouped: true,
+                    borderWidth: 4
+,
+                  data: [
+                    0
+                  ]
+                }, 
+{
+                  label: 'Tabu 10 1000',
+                  grouped: true,
+                    borderWidth: 1
+                  ,
+                  data: [
+                    0
+                  ]
+                }, 
+{
+                  label: 'LAHC 400',
+                  grouped: true,
+                    borderWidth: 1
+                  ,
+                  data: [
+                    0
+                  ]
+                }
+        ]
     },
     options: {
         animation: false,
         responsive: true,
         maintainAspectRatio: false,
+        resizeDelay: 100,
         spanGaps: true,
         plugins: {
             title: {
                 display: true,
-                text: 'Score calculation speed summary (higher is better)'
-            },
-            tooltip: {
-                callbacks: {
-                }
+                text: 'Worst hard score difference percentage summary (higher is better)'
             }
         },
         scales: {
             x: {
-                title: {
-                    display: true,
-                    text: 'Problem scale'
-                },
-                ticks: {
-                        stepSize: 1
-                        
-                },
-                suggestedMin: 0,
-                suggestedMax: 0,
-                type: 'linear',
                 display: true
             },
             y: {
                 title: {
                     display: true,
-                    text: 'Score calculation speed per second'
+                    text: 'Worst hard score difference percentage'
                 },
                 ticks: {
                         stepSize: 1
@@ -77,8 +90,8 @@ plugins: [{
 });
 
 window.addEventListener('beforeprint', () => {
-  chart_scoreCalculationSpeedSummaryChart_894db.resize(1280, 720);
+  chart_worstScoreDifferencePercentageSummaryChart0_16596.resize(1280, 720);
 });
 window.addEventListener('afterprint', () => {
-  chart_scoreCalculationSpeedSummaryChart_894db.resize();
+  chart_worstScoreDifferencePercentageSummaryChart0_16596.resize();
 });

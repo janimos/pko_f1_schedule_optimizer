@@ -18,14 +18,12 @@ public class GlobalConstants {
         endWeek = end;
     }
 
-    public static CountableValueRange<Integer> getWeekRange() {
-        return ValueRangeFactory.createIntValueRange(startWeek, endWeek);
-    }
-
     @Setter @Getter
     private static int stageCount;
 
+    @Getter
     private static int offWeekStart;
+    @Getter
     private static int offWeekEnd;
 
     public static void setOffWeeks(int start, int end) {

@@ -25,6 +25,9 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.print.attribute.standard.DateTimeAtCreation;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -48,11 +51,17 @@ public class RoutingSolution {
     @ValueRangeProvider
     private List<Stage> stageList = new ArrayList<>();
 
+    private int startWeek;
+    private int endWeek;
+
+    private int offWeekStart;
+    private int offWeekEnd;
+
     @ValueRangeProvider(id = "weekRange")
     @JsonIgnore
     public CountableValueRange<Integer> getWeekRange() {
         // Dynamically generate the range based on startWeek and endWeek
-        return ValueRangeFactory.createIntValueRange(GlobalConstants.getStartWeek(), GlobalConstants.getEndWeek());
+        return ValueRangeFactory.createIntValueRange(this.startWeek, this.endWeek);
     }
 
     public void printData(){
@@ -111,7 +120,14 @@ public class RoutingSolution {
         }
 
         RoutingSolution problem = new RoutingSolution();
-        problem.setSolutionId("P1");
+
+        problem.setStartWeek(GlobalConstants.getStartWeek());
+        problem.setEndWeek(GlobalConstants.getEndWeek());
+
+        problem.setOffWeekStart(GlobalConstants.getOffWeekStart());
+        problem.setOffWeekEnd(GlobalConstants.getOffWeekEnd());
+
+        problem.setSolutionId("P_" + new Timestamp(new Date().getTime()).toString());
         problem.getStageList().addAll(stages);
         problem.getLocationList().addAll(locations);
 

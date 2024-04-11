@@ -1,12 +1,39 @@
 
-var chart_timeSpentSummaryChart_eff8b = new Chart(document.getElementById('chart_timeSpentSummaryChart_eff8b'), {
+var chart_bestScoreSummaryChart1_2e86 = new Chart(document.getElementById('chart_bestScoreSummaryChart1_2e86'), {
     type: 'bar',
     data: {
         labels: [
-            
+            'problem_5_5'
         ],
         datasets: [
-                    ]
+            {
+                  label: 'Tabu 5 500 (favorite)',
+                  grouped: true,
+                    borderWidth: 4
+,
+                  data: [
+                    1275
+                  ]
+                }, 
+{
+                  label: 'Tabu 10 1000',
+                  grouped: true,
+                    borderWidth: 1
+                  ,
+                  data: [
+                    1274
+                  ]
+                }, 
+{
+                  label: 'LAHC 400',
+                  grouped: true,
+                    borderWidth: 1
+                  ,
+                  data: [
+                    1247
+                  ]
+                }
+        ]
     },
     options: {
         animation: false,
@@ -15,17 +42,9 @@ var chart_timeSpentSummaryChart_eff8b = new Chart(document.getElementById('chart
         resizeDelay: 100,
         spanGaps: true,
         plugins: {
-                tooltip: {
-                    callbacks: {
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                return label + ": " + humanizeTime(context.parsed.y);
-                            }
-                    }
-                },
             title: {
                 display: true,
-                text: 'Time spent summary (lower time is better)'
+                text: 'Best soft score summary (higher is better)'
             }
         },
         scales: {
@@ -35,14 +54,11 @@ var chart_timeSpentSummaryChart_eff8b = new Chart(document.getElementById('chart
             y: {
                 title: {
                     display: true,
-                    text: 'Time spent'
+                    text: 'Best soft score'
                 },
                 ticks: {
-                        stepSize: 1
-                        ,
-                        callback: function(value, index, ticks) {
-                            return humanizeTime(value);
-                        }
+                        stepSize: 10
+                        
                 },
                 type: 'linear',
                 display: true
@@ -74,8 +90,8 @@ plugins: [{
 });
 
 window.addEventListener('beforeprint', () => {
-  chart_timeSpentSummaryChart_eff8b.resize(1280, 720);
+  chart_bestScoreSummaryChart1_2e86.resize(1280, 720);
 });
 window.addEventListener('afterprint', () => {
-  chart_timeSpentSummaryChart_eff8b.resize();
+  chart_bestScoreSummaryChart1_2e86.resize();
 });

@@ -1,12 +1,36 @@
 
-var chart_timeSpentScalabilitySummaryChart_8056 = new Chart(document.getElementById('chart_timeSpentScalabilitySummaryChart_8056'), {
+var chart_bestScorePerTimeSpentSummaryChart1_c1f60 = new Chart(document.getElementById('chart_bestScorePerTimeSpentSummaryChart1_c1f60'), {
     type: 'line',
     data: {
         labels: [
-            
+            10000
         ],
         datasets: [
-                    ]
+            {
+                  label: 'Tabu 5 500 (favorite)',
+                    borderWidth: 4
+,
+                  data: [
+                    1275
+                  ]
+                }, 
+{
+                  label: 'Tabu 10 1000',
+                    borderWidth: 1
+                  ,
+                  data: [
+                    1274
+                  ]
+                }, 
+{
+                  label: 'LAHC 400',
+                    borderWidth: 1
+                  ,
+                  data: [
+                    1247
+                  ]
+                }
+        ]
     },
     options: {
         animation: false,
@@ -16,14 +40,14 @@ var chart_timeSpentScalabilitySummaryChart_8056 = new Chart(document.getElementB
         plugins: {
             title: {
                 display: true,
-                text: 'Time spent scalability summary (lower is better)'
+                text: 'Best soft score per time spent summary (higher left is better)'
             },
             tooltip: {
                 callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            return label + ": " + humanizeTime(context.parsed.y);
+                        title: function(context) {
+                            return humanizeTime(context[0].parsed.x);
                         }
+                        
                 }
             }
         },
@@ -31,28 +55,28 @@ var chart_timeSpentScalabilitySummaryChart_8056 = new Chart(document.getElementB
             x: {
                 title: {
                     display: true,
-                    text: 'Problem scale'
+                    text: 'Time spent'
                 },
                 ticks: {
-                        stepSize: 1
-                        
+                        stepSize: 100
+                        ,
+                        callback: function(value, index) {
+                            return humanizeTime(value);
+                        }
                 },
                 suggestedMin: 0,
-                suggestedMax: 0,
+                suggestedMax: 10000,
                 type: 'linear',
                 display: true
             },
             y: {
                 title: {
                     display: true,
-                    text: 'Time spent'
+                    text: 'Best soft score'
                 },
                 ticks: {
-                        stepSize: 1
-                        ,
-                        callback: function(value, index, ticks) {
-                            return humanizeTime(value);
-                        }
+                        stepSize: 10
+                        
                 },
                 type: 'linear',
                 display: true
@@ -84,8 +108,8 @@ plugins: [{
 });
 
 window.addEventListener('beforeprint', () => {
-  chart_timeSpentScalabilitySummaryChart_8056.resize(1280, 720);
+  chart_bestScorePerTimeSpentSummaryChart1_c1f60.resize(1280, 720);
 });
 window.addEventListener('afterprint', () => {
-  chart_timeSpentScalabilitySummaryChart_8056.resize();
+  chart_bestScorePerTimeSpentSummaryChart1_c1f60.resize();
 });

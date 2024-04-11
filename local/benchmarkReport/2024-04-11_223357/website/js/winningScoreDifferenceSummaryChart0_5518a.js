@@ -1,12 +1,39 @@
 
-var chart_worstScoreCalculationSpeedDifferencePercentageSummaryChart_a73e5 = new Chart(document.getElementById('chart_worstScoreCalculationSpeedDifferencePercentageSummaryChart_a73e5'), {
+var chart_winningScoreDifferenceSummaryChart0_5518a = new Chart(document.getElementById('chart_winningScoreDifferenceSummaryChart0_5518a'), {
     type: 'bar',
     data: {
         labels: [
-            
+            'problem_5_5'
         ],
         datasets: [
-                    ]
+            {
+                  label: 'Tabu 5 500 (favorite)',
+                  grouped: true,
+                    borderWidth: 4
+,
+                  data: [
+                    0
+                  ]
+                }, 
+{
+                  label: 'Tabu 10 1000',
+                  grouped: true,
+                    borderWidth: 1
+                  ,
+                  data: [
+                    0
+                  ]
+                }, 
+{
+                  label: 'LAHC 400',
+                  grouped: true,
+                    borderWidth: 1
+                  ,
+                  data: [
+                    0
+                  ]
+                }
+        ]
     },
     options: {
         animation: false,
@@ -17,7 +44,7 @@ var chart_worstScoreCalculationSpeedDifferencePercentageSummaryChart_a73e5 = new
         plugins: {
             title: {
                 display: true,
-                text: 'Worst score calculation speed difference percentage summary (higher is better)'
+                text: 'Winning hard score difference summary (higher is better)'
             }
         },
         scales: {
@@ -27,7 +54,7 @@ var chart_worstScoreCalculationSpeedDifferencePercentageSummaryChart_a73e5 = new
             y: {
                 title: {
                     display: true,
-                    text: 'Worst score calculation speed difference percentage'
+                    text: 'Winning hard score difference'
                 },
                 ticks: {
                         stepSize: 1
@@ -63,8 +90,8 @@ plugins: [{
 });
 
 window.addEventListener('beforeprint', () => {
-  chart_worstScoreCalculationSpeedDifferencePercentageSummaryChart_a73e5.resize(1280, 720);
+  chart_winningScoreDifferenceSummaryChart0_5518a.resize(1280, 720);
 });
 window.addEventListener('afterprint', () => {
-  chart_worstScoreCalculationSpeedDifferencePercentageSummaryChart_a73e5.resize();
+  chart_winningScoreDifferenceSummaryChart0_5518a.resize();
 });

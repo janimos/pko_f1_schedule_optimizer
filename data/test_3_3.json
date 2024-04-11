@@ -1,9 +1,9 @@
 {
-  "start_week": 0,
-  "end_week": 3,
-  "stage_count": 3,
-  "off_week_start": null,
-  "off_week_end": null,
+  "startWeek": 0,
+  "endWeek": 3,
+  "stageCount": 3,
+  "offWeekStart": null,
+  "offWeekEnd": null,
   "stages": [
     {
       "name": "Azerbaijan Grand Prix",

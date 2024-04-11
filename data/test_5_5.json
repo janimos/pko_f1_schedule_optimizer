@@ -1,9 +1,9 @@
 {
-  "start_week": 0,
-  "end_week": 5,
-  "stage_count": 5,
-  "off_week_start": null,
-  "off_week_end": null,
+  "startWeek": 0,
+  "endWeek": 5,
+  "stageCount": 5,
+  "offWeekStart": null,
+  "offWeekEnd": null,
   "stages": [
     {
       "name": "Bahrain Grand Prix",

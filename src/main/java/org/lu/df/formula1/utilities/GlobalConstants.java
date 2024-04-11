@@ -19,6 +19,16 @@ public class GlobalConstants {
     @Setter @Getter
     private static int stageCount;
 
+    @Getter
+    private static int offWeekStart;
+    @Getter
+    private static int offWeekEnd;
+
+    public static void setOffWeeks(int start, int end) {
+        offWeekStart = start;
+        offWeekEnd = end;
+    }
+
     public static final Location headquarters = new Location(
             "2 St. James's Market, London, U.K.",
             51.0,

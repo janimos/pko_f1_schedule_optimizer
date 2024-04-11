@@ -14,7 +14,6 @@
     </scoreDirectorFactory>
 
     <!-- Configure the optimization algorithms (optional) -->
-    <!-- Configure the optimization algorithms (optional) -->
     <termination>
         <secondsSpentLimit>5</secondsSpentLimit>
     </termination>

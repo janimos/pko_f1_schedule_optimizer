@@ -17,12 +17,10 @@ public class Main {
 
         LOGGER.info("Start!");
 
-        String testFilePath = "data/simple_test_3.json";
+        String testFilePath = "data/test_data_3.json";
         RoutingSolution problem = RoutingSolution.getDataFromJson(testFilePath);
 
-        GlobalConstants.setStartEndWeek(0, 10);
-
-        //LOGGER.info(String.valueOf(problem.getWeekRange()));
+        GlobalConstants.setStartEndWeek(0, 40);
 
         problem.printData();
 
@@ -38,6 +36,8 @@ public class Main {
 
         solution.reorderSchedule();
         solution.printData();
+
+        LOGGER.info(scoreExplanation.getScore().toString());
 
         LOGGER.info("End!");
     }

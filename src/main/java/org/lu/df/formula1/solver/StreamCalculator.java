@@ -14,11 +14,11 @@ public class StreamCalculator implements ConstraintProvider {
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[] {
                 uniqueWeeksConstraint(constraintFactory),
+                maxThreeStagesInARow(constraintFactory),
 
                 costIncomeDifferenceConstraint(constraintFactory),
                 weekDifferenceConstraint(constraintFactory),
-                stageSequenceConstraint(constraintFactory),
-                maxThreeStagesInARow(constraintFactory),
+                //stageSequenceConstraint(constraintFactory),
                 minimizeTravelDistance(constraintFactory),
                 minimizeTravelEmissions(constraintFactory),
                 maximizeAttendanceAndIncome(constraintFactory),
@@ -32,6 +32,24 @@ public class StreamCalculator implements ConstraintProvider {
                         Joiners.equal(Stage::getWeek))
                 .penalize(HardSoftScore.ONE_HARD)
                 .asConstraint("uniqueWeeksConstraint");
+    }
+
+    public Constraint maxThreeStagesInARow(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(Stage.class)
+                .filter(stage -> {
+                    int count = 1;  // Start with the current stage
+                    Stage nextStage = stage.getNext();
+                    while (nextStage != null && nextStage.getWeek() == stage.getWeek() + count) {
+                        count++;
+                        if (count > 3) {
+                            return true;  // More than three stages in a row found
+                        }
+                        nextStage = nextStage.getNext();
+                    }
+                    return false;  // Less than or equal to three stages in a row
+                })
+                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.getStageCount())
+                .asConstraint("maxThreeStagesInARow");
     }
 
     public Constraint costIncomeDifferenceConstraint(ConstraintFactory constraintFactory) {
@@ -72,23 +90,7 @@ public class StreamCalculator implements ConstraintProvider {
                 .asConstraint("stageSequenceConstraint");
     }
 
-    public Constraint maxThreeStagesInARow(ConstraintFactory constraintFactory) {
-        return constraintFactory.forEach(Stage.class)
-                .filter(stage -> {
-                    int count = 1;  // Start with the current stage
-                    Stage nextStage = stage.getNext();
-                    while (nextStage != null && nextStage.getWeek() == stage.getWeek() + count) {
-                        count++;
-                        if (count > 3) {
-                            return true;  // More than three stages in a row found
-                        }
-                        nextStage = nextStage.getNext();
-                    }
-                    return false;  // Less than or equal to three stages in a row
-                })
-                .penalize(HardSoftScore.ONE_SOFT, stage -> GlobalConstants.getStageCount() * GlobalConstants.penaltyFactor)
-                .asConstraint("maxThreeStagesInARow");
-    }
+
 
     public Constraint minimizeTravelDistance(ConstraintFactory constraintFactory) {
         return constraintFactory.forEach(Stage.class)

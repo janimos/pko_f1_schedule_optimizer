@@ -1,52 +1,89 @@
-[
-  {
-    "name": "Bahrain Grand Prix",
-    "location": {
-      "address": "Bahrain International Circuit, Sakhir, Bahrain",
-      "latitude": "26",
-      "longitude": "50"
+{
+  "start_week": 1,
+  "end_week": 21,
+  "stage_count": 20,
+  "off_week_start": null,
+  "off_week_end": null,
+  "stages": [
+    {
+      "name": "Bahrain Grand Prix",
+      "location": {
+        "address": "Bahrain International Circuit, Sakhir, Bahrain",
+        "latitude": "26",
+        "longitude": "50"
+      },
+      "week": 0,
+      "attendance": [
+        99500,
+        100250,
+        95600,
+        94300,
+        98750
+      ]
     },
-    "week": 0,
-    "attendance": [99500, 100250, 95600, 94300, 98750]
-  },
-  {
-    "name": "Miami Grand Prix",
-    "location": {
-      "address": "Miami International Autodrome, Miami, Florida, USA",
-      "latitude": "25",
-      "longitude": "-80"
+    {
+      "name": "Miami Grand Prix",
+      "location": {
+        "address": "Miami International Autodrome, Miami, Florida, USA",
+        "latitude": "25",
+        "longitude": "-80"
+      },
+      "week": 1,
+      "attendance": [
+        250000,
+        270000,
+        260000,
+        275000,
+        265000
+      ]
     },
-    "week": 1,
-    "attendance": [250000, 270000, 260000, 275000, 265000]
-  },
-  {
-    "name": "British Grand Prix",
-    "location": {
-      "address": "Silverstone Circuit, Silverstone, United Kingdom",
-      "latitude": "52",
-      "longitude": "-1"
+    {
+      "name": "British Grand Prix",
+      "location": {
+        "address": "Silverstone Circuit, Silverstone, United Kingdom",
+        "latitude": "52",
+        "longitude": "-1"
+      },
+      "week": 2,
+      "attendance": [
+        265000,
+        390000,
+        480000,
+        475000,
+        455000
+      ]
     },
-    "week": 2,
-    "attendance": [265000, 390000, 480000, 475000, 455000]
-  },
-  {
-    "name": "Italian Grand Prix",
-    "location": {
-      "address": "Monza Circuit, Monza, Italy",
-      "latitude": "45",
-      "longitude": "9"
+    {
+      "name": "Italian Grand Prix",
+      "location": {
+        "address": "Monza Circuit, Monza, Italy",
+        "latitude": "45",
+        "longitude": "9"
+      },
+      "week": 3,
+      "attendance": [
+        275000,
+        250000,
+        310000,
+        305000,
+        320000
+      ]
     },
-    "week": 3,
-    "attendance": [275000, 250000, 310000, 305000, 320000]
-  },
-  {
-    "name": "Japanese Grand Prix",
-    "location": {
-      "address": "Suzuka International Racing Course, Suzuka, Japan",
-      "latitude": "34",
-      "longitude": "136"
-    },
-    "week": 4,
-    "attendance": [75000, 150000, 175000, 195000, 200000]
-  }
-]
+    {
+      "name": "Japanese Grand Prix",
+      "location": {
+        "address": "Suzuka International Racing Course, Suzuka, Japan",
+        "latitude": "34",
+        "longitude": "136"
+      },
+      "week": 4,
+      "attendance": [
+        75000,
+        150000,
+        175000,
+        195000,
+        200000
+      ]
+    }
+  ]
+}

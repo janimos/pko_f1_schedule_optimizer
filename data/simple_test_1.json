@@ -1,32 +1,51 @@
-[
-  {
-    "name": "Azerbaijan Grand Prix",
-    "location": {
-      "address": "Baku City Circuit, Baku, Azerbaijan",
-      "latitude": "40",
-      "longitude": "49"
+{
+  "start_week": 1,
+  "end_week": 21,
+  "stage_count": 20,
+  "off_week_start": null,
+  "off_week_end": null,
+  "stages": [
+    {
+      "name": "Azerbaijan Grand Prix",
+      "location": {
+        "address": "Baku City Circuit, Baku, Azerbaijan",
+        "latitude": "40",
+        "longitude": "49"
+      },
+      "week": 0,
+      "attendance": [
+        85000,
+        83500,
+        86500
+      ]
     },
-    "week": 0,
-    "attendance": [85000, 83500, 86500]
-  },
-  {
-    "name": "Monaco Grand Prix",
-    "location": {
-      "address": "Circuit de Monaco, Monte Carlo, Monaco",
-      "latitude": "43",
-      "longitude": "7"
+    {
+      "name": "Monaco Grand Prix",
+      "location": {
+        "address": "Circuit de Monaco, Monte Carlo, Monaco",
+        "latitude": "43",
+        "longitude": "7"
+      },
+      "week": 1,
+      "attendance": [
+        190000,
+        200000,
+        185000
+      ]
     },
-    "week": 1,
-    "attendance": [190000, 200000, 185000]
-  },
-  {
-    "name": "Belgian Grand Prix",
-    "location": {
-      "address": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
-      "latitude": "50",
-      "longitude": "5"
-    },
-    "week": 2,
-    "attendance": [375000, 360000, 380000]
-  }
-]
+    {
+      "name": "Belgian Grand Prix",
+      "location": {
+        "address": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
+        "latitude": "50",
+        "longitude": "5"
+      },
+      "week": 2,
+      "attendance": [
+        375000,
+        360000,
+        380000
+      ]
+    }
+  ]
+}

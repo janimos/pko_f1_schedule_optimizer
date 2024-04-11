@@ -54,7 +54,7 @@ public class RoutingSolution {
     public void printData(){
         this.getStageList().forEach(stage -> {
             LOGGER.info(stage.getName() + " at " + stage.getLocation().getAddress());
-            LOGGER.info("[ Planned week: " + (stage.getWeek() + GlobalConstants.weekCounter) + " ]\t[ Planned income: " + Calculations.getStageIncome(stage) + " ]\n");
+            LOGGER.info("[ Planned week: " + (stage.getWeek()/* + GlobalConstants.weekCounter*/) + " ]\t[ Planned income: " + Calculations.getStageIncome(stage) + " ]\n");
         });
 
         Double income = 0.0;

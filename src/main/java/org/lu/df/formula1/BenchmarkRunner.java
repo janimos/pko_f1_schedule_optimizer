@@ -16,13 +16,6 @@ public class BenchmarkRunner {
         PlannerBenchmarkFactory benchmarkFactoryFromXML = PlannerBenchmarkFactory
                 .createFromXmlResource("BenchmarkConfig.xml");
 
-        /*String name = "5_5.json";
-
-        RoutingSolutionJsonIO routingSolutionJsonIO = new RoutingSolutionJsonIO();
-        routingSolutionJsonIO.write(
-                RoutingSolution.getDataFromJson("data/tests/test_" + name),
-                new File("data/problems/problem_" + name));*/
-
         PlannerBenchmark benchmark = benchmarkFactoryFromXML.buildPlannerBenchmark();
 
         benchmark.benchmarkAndShowReportInBrowser();

@@ -2,6 +2,8 @@ package org.lu.df.formula1.domain;
 
 import ai.timefold.solver.core.api.domain.valuerange.CountableValueRange;
 import ai.timefold.solver.core.api.domain.valuerange.ValueRangeFactory;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.lu.df.formula1.utilities.Calculations;
 import org.lu.df.formula1.utilities.GlobalConstants;
@@ -47,8 +49,9 @@ public class RoutingSolution {
     private List<Stage> stageList = new ArrayList<>();
 
     @ValueRangeProvider(id = "weekRange")
+    @JsonIgnore
     public CountableValueRange<Integer> getWeekRange() {
-        // Example: If weeks range from 1 to 52
+        // Dynamically generate the range based on startWeek and endWeek
         return ValueRangeFactory.createIntValueRange(GlobalConstants.getStartWeek(), GlobalConstants.getEndWeek());
     }
 
@@ -111,6 +114,8 @@ public class RoutingSolution {
         problem.setSolutionId("P1");
         problem.getStageList().addAll(stages);
         problem.getLocationList().addAll(locations);
+
+        problem.reorderSchedule();
 
         return problem;
     }

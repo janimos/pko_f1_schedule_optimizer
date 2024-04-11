@@ -30,19 +30,21 @@ public class Stage {
     private List<Double> attendance = new ArrayList<>();
 
     @PlanningVariable(valueRangeProviderRefs = "weekRange")
+    @JsonIdentityReference
     private Integer week;
 
-    @JsonIgnore
     @CustomShadowVariable(variableListenerClass = StageChainingListener.class,
             sources = {@PlanningVariableReference(variableName = "week")})
+    @JsonIdentityReference
     private Stage next;
 
-    @JsonIgnore
     @CustomShadowVariable(variableListenerClass = StageChainingListener.class,
             sources = {@PlanningVariableReference(variableName = "week")})
+    @JsonIdentityReference
     private Stage previous;
 
     @Override
+    @JsonIgnore
     public String toString(){
         return this.getName();
     }

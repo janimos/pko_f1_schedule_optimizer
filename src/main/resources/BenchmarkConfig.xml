@@ -25,7 +25,7 @@
        <problemBenchmarks>
             <solutionFileIOClass>org.lu.df.formula1.domain.RoutingSolutionJsonIO</solutionFileIOClass>
             <writeOutputSolutionEnabled>true</writeOutputSolutionEnabled>
-            <inputSolutionFile>data/simple_test_1.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_5_5.json</inputSolutionFile>
         </problemBenchmarks>
     </inheritedSolverBenchmark>
 
@@ -34,9 +34,8 @@
         <solver>
             <localSearch>
                 <unionMoveSelector>
-                    <subListChangeMoveSelector />
-                    <listChangeMoveSelector />
-                    <listSwapMoveSelector />
+                    <changeMoveSelector />
+                    <swapMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <valueTabuSize>5</valueTabuSize>
@@ -52,9 +51,8 @@
         <solver>
             <localSearch>
                 <unionMoveSelector>
-                    <subListChangeMoveSelector />
-                    <listChangeMoveSelector />
-                    <listSwapMoveSelector />
+                    <changeMoveSelector />
+                    <swapMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <valueTabuSize>10</valueTabuSize>
@@ -70,9 +68,8 @@
         <solver>
             <localSearch>
                 <unionMoveSelector>
-                    <subListChangeMoveSelector />
-                    <listChangeMoveSelector />
-                    <listSwapMoveSelector />
+                    <changeMoveSelector />
+                    <swapMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <lateAcceptanceSize>400</lateAcceptanceSize>

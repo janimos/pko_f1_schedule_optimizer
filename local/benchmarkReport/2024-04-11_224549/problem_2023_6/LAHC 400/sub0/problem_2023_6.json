@@ -1,0 +1,100 @@
+{
+  "solutionId" : "P_2024-04-11 22:37:58.01",
+  "score" : "0hard/1201soft",
+  "locationList" : [ {
+    "address" : "Bahrain International Circuit, Sakhir, Bahrain",
+    "latitude" : 26.0325,
+    "longitude" : 50.5106
+  }, {
+    "address" : "Circuit de Monaco, Monte Carlo, Monaco",
+    "latitude" : 43.7374,
+    "longitude" : 7.4246
+  }, {
+    "address" : "Red Bull Ring, Spielberg, Austria",
+    "latitude" : 47.2197,
+    "longitude" : 14.7647
+  }, {
+    "address" : "Circuit Zandvoort, Zandvoort, Netherlands",
+    "latitude" : 52.3888,
+    "longitude" : 4.5409
+  }, {
+    "address" : "Suzuka International Racing Course, Suzuka, Japan",
+    "latitude" : 34.8431,
+    "longitude" : 136.5419
+  }, {
+    "address" : "Interlagos Circuit, São Paulo, Brazil",
+    "latitude" : 3.7036,
+    "longitude" : -46.6997
+  } ],
+  "stageList" : [ {
+    "name" : "Bahrain Grand Prix",
+    "location" : {
+      "address" : "Bahrain International Circuit, Sakhir, Bahrain",
+      "latitude" : 26.0325,
+      "longitude" : 50.5106
+    },
+    "attendance" : [ 99500.0, 100000.0, 98000.0, 97000.0, 95000.0, 93000.0, 92000.0, 90000.0, 85000.0, 73000.0, 57600.0, 43250.0, 32000.0, 4500.0, 3200.0, 7800.0, 15000.0, 27500.0, 30000.0, 25000.0, 16000.0, 0.0, 0.0, 0.0, 0.0, 50000.0, 68400.0, 70000.0, 77000.0, 77250.0, 73000.0, 80000.0, 90000.0, 100000.0, 92500.0, 97300.0, 99500.0, 100000.0, 93700.0, 95500.0, 96400.0, 100000.0 ],
+    "week" : 9,
+    "next" : {
+      "name" : "Dutch Grand Prix",
+      "location" : {
+        "address" : "Circuit Zandvoort, Zandvoort, Netherlands",
+        "latitude" : 52.3888,
+        "longitude" : 4.5409
+      },
+      "attendance" : [ 40000.0, 45000.0, 50000.0, 80000.0, 84500.0, 100000.0, 110000.0, 115000.0, 130000.0, 167500.0, 198750.0, 200000.0, 220000.0, 275000.0, 290000.0, 295000.0, 295000.0, 300000.0, 300000.0, 300000.0, 305000.0, 0.0, 0.0, 0.0, 0.0, 300000.0, 305000.0, 305000.0, 305000.0, 300000.0, 295000.0, 275000.0, 250000.0, 225000.0, 197500.0, 150000.0, 130000.0, 110000.0, 75400.0, 62000.0, 34200.0, 12000.0, 4500.0 ],
+      "week" : 14,
+      "next" : {
+        "name" : "São Paulo Grand Prix",
+        "location" : {
+          "address" : "Interlagos Circuit, São Paulo, Brazil",
+          "latitude" : 3.7036,
+          "longitude" : -46.6997
+        },
+        "attendance" : [ 210000.0, 250000.0, 267000.0, 230000.0, 267000.0, 230000.0, 250000.0, 250000.0, 210000.0, 230000.0, 190000.0, 200000.0, 230000.0, 180000.0, 170000.0, 160000.0, 200000.0, 200000.0, 180000.0, 175000.0, 160000.0, 0.0, 0.0, 0.0, 0.0, 175000.0, 175000.0, 200000.0, 190000.0, 180000.0, 175000.0, 230000.0, 200000.0, 230000.0, 267000.0, 250000.0, 267000.0, 225000.0, 230000.0, 250000.0, 267000.0, 267000.0, 267000.0 ],
+        "week" : 12,
+        "next" : {
+          "name" : "Monaco Grand Prix",
+          "location" : {
+            "address" : "Circuit de Monaco, Monte Carlo, Monaco",
+            "latitude" : 43.7374,
+            "longitude" : 7.4246
+          },
+          "attendance" : [ 184500.0, 130000.0, 140000.0, 145000.0, 150000.0, 187500.0, 200500.0, 175000.0, 198000.0, 200000.0, 205000.0, 210000.0, 200000.0, 201000.0, 200000.0, 201000.0, 198500.0, 185000.0, 190000.0, 150000.0, 140000.0, 0.0, 0.0, 0.0, 0.0, 179000.0, 210000.0, 205500.0, 200000.0, 199000.0, 190000.0, 175000.0, 170000.0, 162000.0, 155550.0, 139000.0, 120000.0, 100000.0, 98000.0, 90000.0, 85000.0, 80000.0 ],
+          "week" : 11,
+          "next" : "São Paulo Grand Prix",
+          "previous" : {
+            "name" : "Austrian Grand Prix",
+            "location" : {
+              "address" : "Red Bull Ring, Spielberg, Austria",
+              "latitude" : 47.2197,
+              "longitude" : 14.7647
+            },
+            "attendance" : [ 12000.0, 25000.0, 50000.0, 90500.0, 130000.0, 164500.0, 200000.0, 230000.0, 250000.0, 278500.0, 301000.0, 299950.0, 301000.0, 300000.0, 305000.0, 302000.0, 304000.0, 305000.0, 304000.0, 305000.0, 300000.0, 0.0, 0.0, 0.0, 0.0, 301000.0, 286400.0, 250000.0, 230000.0, 220000.0, 201000.0, 198450.0, 250000.0, 200000.0, 176400.0, 165400.0, 150000.0, 130000.0, 120500.0, 102000.0, 75400.0, 62000.0 ],
+            "week" : 10,
+            "next" : "Monaco Grand Prix",
+            "previous" : "Bahrain Grand Prix"
+          }
+        },
+        "previous" : "Monaco Grand Prix"
+      },
+      "previous" : "Monaco Grand Prix"
+    },
+    "previous" : {
+      "name" : "Japanese Grand Prix",
+      "location" : {
+        "address" : "Suzuka International Racing Course, Suzuka, Japan",
+        "latitude" : 34.8431,
+        "longitude" : 136.5419
+      },
+      "attendance" : [ 130000.0, 130000.0, 150000.0, 165000.0, 200000.0, 222000.0, 225000.0, 220000.0, 222000.0, 200000.0, 184500.0, 194500.0, 184500.0, 130000.0, 142000.0, 142000.0, 165000.0, 184500.0, 165000.0, 150000.0, 187500.0, 0.0, 0.0, 0.0, 0.0, 200000.0, 200000.0, 220000.0, 225000.0, 222000.0, 200000.0, 200000.0, 200000.0, 184500.0, 184500.0, 165000.0, 165000.0, 150000.0, 187500.0, 142000.0, 130000.0, 75000.0, 50000.0 ],
+      "week" : 8,
+      "next" : "Bahrain Grand Prix",
+      "previous" : "Bahrain Grand Prix"
+    }
+  }, "Monaco Grand Prix", "Austrian Grand Prix", "Dutch Grand Prix", "Japanese Grand Prix", "São Paulo Grand Prix" ],
+  "startWeek" : 0,
+  "endWeek" : 40,
+  "offWeekStart" : 21,
+  "offWeekEnd" : 24
+}

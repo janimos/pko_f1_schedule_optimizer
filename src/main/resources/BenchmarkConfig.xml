@@ -25,7 +25,7 @@
        <problemBenchmarks>
             <solutionFileIOClass>org.lu.df.formula1.domain.RoutingSolutionJsonIO</solutionFileIOClass>
             <writeOutputSolutionEnabled>true</writeOutputSolutionEnabled>
-            <inputSolutionFile>data/problems/problem_5_5.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_2023_full.json</inputSolutionFile>
         </problemBenchmarks>
     </inheritedSolverBenchmark>
 
@@ -35,7 +35,6 @@
             <localSearch>
                 <unionMoveSelector>
                     <changeMoveSelector />
-                    <swapMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <valueTabuSize>5</valueTabuSize>
@@ -52,7 +51,6 @@
             <localSearch>
                 <unionMoveSelector>
                     <changeMoveSelector />
-                    <swapMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <valueTabuSize>10</valueTabuSize>
@@ -69,7 +67,6 @@
             <localSearch>
                 <unionMoveSelector>
                     <changeMoveSelector />
-                    <swapMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <lateAcceptanceSize>400</lateAcceptanceSize>

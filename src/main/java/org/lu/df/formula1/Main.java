@@ -17,7 +17,7 @@ public class Main {
 
         LOGGER.info("Start!");
 
-        String testFilePath = "data/test_data_3.json";
+        String testFilePath = "data/test_data_1.json";
         RoutingSolution problem = RoutingSolution.getDataFromJson(testFilePath);
 
         GlobalConstants.setStartEndWeek(0, 40);

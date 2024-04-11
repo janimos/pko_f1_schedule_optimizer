@@ -16,7 +16,7 @@
     <!-- Configure the optimization algorithms (optional) -->
     <!-- Configure the optimization algorithms (optional) -->
     <termination>
-        <secondsSpentLimit>10</secondsSpentLimit>
+        <secondsSpentLimit>5</secondsSpentLimit>
     </termination>
 
     <constructionHeuristic />

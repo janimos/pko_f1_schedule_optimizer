@@ -1,8 +1,24 @@
 package org.lu.df.formula1.utilities;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.lu.df.formula1.domain.Location;
 
+
 public class GlobalConstants {
+    @Getter
+    private static int startWeek;
+    @Getter
+    private static int endWeek;
+
+    public static void setStartEndWeek(int start, int end) {
+        startWeek = start;
+        endWeek = end;
+    }
+
+    @Setter @Getter
+    private static int stageCount;
+
     public static final Location headquarters = new Location(
             "2 St. James's Market, London, U.K.",
             51.0,
@@ -26,4 +42,8 @@ public class GlobalConstants {
 
     // Source for calculations: https://github.com/dw-data/travel-cost
     public static final Double pricePerKilometer = 0.253;
+
+    public static final int estimatedEmployeeAmount = 3000; // Assumption, all teams have around 600-700 employees at GP + number of Formula 1 and FIA employees
+
+    public static final int penaltyFactor = 50;
 }

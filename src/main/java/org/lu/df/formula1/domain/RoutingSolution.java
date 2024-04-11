@@ -3,6 +3,7 @@ package org.lu.df.formula1.domain;
 import ai.timefold.solver.core.api.domain.valuerange.CountableValueRange;
 import ai.timefold.solver.core.api.domain.valuerange.ValueRangeFactory;
 import org.lu.df.formula1.utilities.Calculations;
+import org.lu.df.formula1.utilities.GlobalConstants;
 import org.lu.df.formula1.utilities.JsonUtilities;
 
 import ai.timefold.solver.core.api.domain.solution.PlanningEntityCollectionProperty;
@@ -44,20 +45,16 @@ public class RoutingSolution {
     @ValueRangeProvider
     private List<Stage> stageList = new ArrayList<>();
 
-    private int startWeek;
-
-    private int endWeek;
-
     @ValueRangeProvider(id = "weekRange")
     public CountableValueRange<Integer> getWeekRange() {
         // Example: If weeks range from 1 to 52
-        return ValueRangeFactory.createIntValueRange(this.startWeek, this.endWeek);
+        return ValueRangeFactory.createIntValueRange(GlobalConstants.getStartWeek(), GlobalConstants.getEndWeek());
     }
 
     public void printData(){
         this.getStageList().forEach(stage -> {
             LOGGER.info(stage.getName() + " at " + stage.getLocation().getAddress());
-            LOGGER.info("[ Planned week: " + stage.getWeek() + " ]\t[ Planned income: " + Calculations.getStageIncome(stage) + " ]\n");
+            LOGGER.info("[ Planned week: " + (stage.getWeek() + GlobalConstants.weekCounter) + " ]\t[ Planned income: " + Calculations.getStageIncome(stage) + " ]\n");
         });
 
         Double income = 0.0;
@@ -73,6 +70,8 @@ public class RoutingSolution {
 
         List<Stage> stages = mapper.readValue(jsonContent, new TypeReference<List<Stage>>() {});
         List<Location> locations = stages.stream().map(Stage::getLocation).distinct().toList();
+
+        GlobalConstants.setStageCount(stages.size());
 
         // Assuming the stages are already sorted by week in the JSON file.
         // If not, you should sort them here based on the week field.

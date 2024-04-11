@@ -7,6 +7,7 @@ import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.lu.df.formula1.domain.RoutingSolution;
+import org.lu.df.formula1.utilities.GlobalConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +20,7 @@ public class Main {
         String testFilePath = "data/simple_test_3.json";
         RoutingSolution problem = RoutingSolution.getDataFromJson(testFilePath);
 
-        problem.setStartWeek(0);
-        problem.setEndWeek(10);
+        GlobalConstants.setStartEndWeek(0, 10);
 
         //LOGGER.info(String.valueOf(problem.getWeekRange()));
 

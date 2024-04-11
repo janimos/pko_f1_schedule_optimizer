@@ -1,7 +1,7 @@
 {
-  "start_week": 1,
-  "end_week": 21,
-  "stage_count": 20,
+  "start_week": 0,
+  "end_week": 3,
+  "stage_count": 3,
   "off_week_start": null,
   "off_week_end": null,
   "stages": [
@@ -13,11 +13,7 @@
         "longitude": "49"
       },
       "week": 0,
-      "attendance": [
-        85000,
-        83500,
-        86500
-      ]
+      "attendance": [85000, 83500, 86500]
     },
     {
       "name": "Monaco Grand Prix",
@@ -27,11 +23,7 @@
         "longitude": "7"
       },
       "week": 1,
-      "attendance": [
-        190000,
-        200000,
-        185000
-      ]
+      "attendance": [190000, 200000, 185000]
     },
     {
       "name": "Belgian Grand Prix",
@@ -41,11 +33,7 @@
         "longitude": "5"
       },
       "week": 2,
-      "attendance": [
-        375000,
-        360000,
-        380000
-      ]
+      "attendance": [375000, 360000, 380000]
     }
   ]
 }

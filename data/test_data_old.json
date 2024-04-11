@@ -1,0 +1,178 @@
+[
+  {
+    "Name": "Bahrain Grand Prix",
+    "Location": "Bahrain International Circuit, Sakhir, Bahrain",
+    "Latitude": "26.0325",
+    "Longitude": "50.5106",
+    "Week": 9,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 99500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Saudi Arabian Grand Prix",
+    "Location": "Jeddah Corniche Circuit, Jeddah, Saudi Arabia",
+    "Latitude": "21.5433",
+    "Longitude": "39.1728",
+    "Week": 11,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Australian Grand Prix",
+    "Location": "Albert Park Circuit, Melbourne, Australia",
+    "Latitude": "-37.8497",
+    "Longitude": "144.968",
+    "Week": 13,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 444631, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Azerbaijan Grand Prix",
+    "Location": "Baku City Circuit, Baku, Azerbaijan",
+    "Latitude": "40.3725",
+    "Longitude": "49.8533",
+    "Week": 17,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Miami Grand Prix",
+    "Location": "Miami International Autodrome, Miami, Florida, USA",
+    "Latitude": "25.9580",
+    "Longitude": "-80.2389",
+    "Week": 18,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 270000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Monaco Grand Prix",
+    "Location": "Circuit de Monaco, Monte Carlo, Monaco",
+    "Latitude": "43.7374",
+    "Longitude": "7.4246",
+    "Week": 21,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Spanish Grand Prix",
+    "Location": "Circuit de Barcelona-Catalunya, Montmeló, Spain",
+    "Latitude": "41.5700",
+    "Longitude": "2.2611",
+    "Week": 22,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 284066, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Canadian Grand Prix",
+    "Location": "Circuit Gilles Villeneuve, Montreal, Canada",
+    "Latitude": "45.5000",
+    "Longitude": "-73.5228",
+    "Week": 24,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 345000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Austrian Grand Prix",
+    "Location": "Red Bull Ring, Spielberg, Austria",
+    "Latitude": "47.2197",
+    "Longitude": "14.7647",
+    "Week": 26,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 304000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "British Grand Prix",
+    "Location": "Silverstone Circuit, Silverstone, United Kingdom",
+    "Latitude": "52.0786",
+    "Longitude": "-1.0169",
+    "Week": 27,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Hungarian Grand Prix",
+    "Location": "Hungaroring, Mogyoród, Hungary",
+    "Latitude": "47.5789",
+    "Longitude": "19.2486",
+    "Week": 29,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 303000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Belgian Grand Prix",
+    "Location": "Circuit de Spa-Francorchamps, Stavelot, Belgium",
+    "Latitude": "50.4372",
+    "Longitude": "5.9714",
+    "Week": 30,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 380000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Dutch Grand Prix",
+    "Location": "Circuit Zandvoort, Zandvoort, Netherlands",
+    "Latitude": "52.3888",
+    "Longitude": "4.5409",
+    "Week": 35,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 305000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Italian Grand Prix",
+    "Location": "Monza Circuit, Monza, Italy",
+    "Latitude": "45.6156",
+    "Longitude": "9.2811",
+    "Week": 36,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 304134, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Singapore Grand Prix",
+    "Location": "Marina Bay Street Circuit, Singapore",
+    "Latitude": "1.2914",
+    "Longitude": "103.8640",
+    "Week": 37,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 264108, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Japanese Grand Prix",
+    "Location": "Suzuka International Racing Course, Suzuka, Japan",
+    "Latitude": "34.8431",
+    "Longitude": "136.5419",
+    "Week": 38,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Qatar Grand Prix",
+    "Location": "Lusail International Circuit, Lusail, Qatar",
+    "Latitude": "25.4900",
+    "Longitude": "51.4542",
+    "Week": 40,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "United States Grand Prix",
+    "Location": "Circuit of the Americas, Austin, Texas, USA",
+    "Latitude": "30.1346",
+    "Longitude": "-97.6359",
+    "Week": 42,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Mexico City Grand Prix",
+    "Location": "Autódromo Hermanos Rodríguez, Mexico City, Mexico",
+    "Latitude": "19.4042",
+    "Longitude": "-99.0907",
+    "Week": 43,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0]
+  },
+  {
+    "Name": "São Paulo Grand Prix",
+    "Location": "Interlagos Circuit, São Paulo, Brazil",
+    "Latitude": "-23.7036",
+    "Longitude": "-46.6997",
+    "Week": 44,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0]
+  },
+  {
+    "Name": "Las Vegas Grand Prix",
+    "Location": "Las Vegas Street Circuit, Las Vegas, Nevada, USA",
+    "Latitude": "36.1699",
+    "Longitude": "-115.1398",
+    "Week": 46,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0]
+  },
+  {
+    "Name": "Abu Dhabi Grand Prix",
+    "Location": "Yas Marina Circuit, Abu Dhabi, United Arab Emirates",
+    "Latitude": "24.4672",
+    "Longitude": "54.6031",
+    "Week": 47,
+    "attendance": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0]
+  }
+]

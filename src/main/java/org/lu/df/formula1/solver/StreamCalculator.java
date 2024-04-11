@@ -15,6 +15,7 @@ public class StreamCalculator implements ConstraintProvider {
         return new Constraint[] {
                 uniqueWeeksConstraint(constraintFactory),
                 maxThreeStagesInARow(constraintFactory),
+                noStagesDuringOffWeeks(constraintFactory),
 
                 costIncomeDifferenceConstraint(constraintFactory),
                 weekDifferenceConstraint(constraintFactory),
@@ -48,9 +49,20 @@ public class StreamCalculator implements ConstraintProvider {
                     }
                     return false;  // Less than or equal to three stages in a row
                 })
-                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.getStageCount())
+                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor)
                 .asConstraint("maxThreeStagesInARow");
     }
+
+    public Constraint noStagesDuringOffWeeks(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(Stage.class)
+                .filter(stage -> {
+                    // Check if the week of the stage falls within the off weeks range
+                    return GlobalConstants.getOffWeekRange().contains(stage.getWeek());
+                })
+                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor)
+                .asConstraint("No Stages During Off Weeks");
+    }
+
 
     public Constraint costIncomeDifferenceConstraint(ConstraintFactory constraintFactory) {
         return constraintFactory

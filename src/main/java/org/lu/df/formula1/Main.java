@@ -16,7 +16,7 @@ public class Main {
 
         LOGGER.info("Start!");
 
-        String testFilePath = "data/test_2023_20.json";
+        String testFilePath = "data/test_2023_full.json";
         RoutingSolution problem = RoutingSolution.getDataFromJson(testFilePath);
 
         problem.printData();

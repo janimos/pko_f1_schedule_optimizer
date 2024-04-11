@@ -1,5 +1,7 @@
 package org.lu.df.formula1.utilities;
 
+import ai.timefold.solver.core.api.domain.valuerange.CountableValueRange;
+import ai.timefold.solver.core.api.domain.valuerange.ValueRangeFactory;
 import lombok.Getter;
 import lombok.Setter;
 import org.lu.df.formula1.domain.Location;
@@ -19,14 +21,16 @@ public class GlobalConstants {
     @Setter @Getter
     private static int stageCount;
 
-    @Getter
     private static int offWeekStart;
-    @Getter
     private static int offWeekEnd;
 
     public static void setOffWeeks(int start, int end) {
         offWeekStart = start;
         offWeekEnd = end;
+    }
+
+    public static CountableValueRange<Integer> getOffWeekRange() {
+        return ValueRangeFactory.createIntValueRange(offWeekStart, offWeekEnd);
     }
 
     public static final Location headquarters = new Location(
@@ -55,5 +59,5 @@ public class GlobalConstants {
 
     public static final int estimatedEmployeeAmount = 3000; // Assumption, all teams have around 600-700 employees at GP + number of Formula 1 and FIA employees
 
-    public static final int penaltyFactor = 50;
+    public static final int penaltyFactor = 5;
 }

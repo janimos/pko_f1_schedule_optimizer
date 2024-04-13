@@ -25,14 +25,8 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.print.attribute.standard.DateTimeAtCreation;
-import java.util.Date;
+import java.util.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @PlanningSolution
 @Getter @Setter @NoArgsConstructor
@@ -127,7 +121,9 @@ public class RoutingSolution {
         problem.setOffWeekStart(GlobalConstants.getOffWeekStart());
         problem.setOffWeekEnd(GlobalConstants.getOffWeekEnd());
 
-        problem.setSolutionId("P_" + new Timestamp(new Date().getTime()).toString());
+        Random randomizer = new Random();
+
+        problem.setSolutionId(String.valueOf(randomizer.nextInt(0, 100)));
         problem.getStageList().addAll(stages);
         problem.getLocationList().addAll(locations);
 

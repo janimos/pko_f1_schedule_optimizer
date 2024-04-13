@@ -30,17 +30,17 @@ public class Stage {
     private List<Double> attendance = new ArrayList<>();
 
     @PlanningVariable(valueRangeProviderRefs = "weekRange")
-    @JsonIdentityReference
+    @JsonIdentityReference(alwaysAsId = true)
     private Integer week;
 
     @CustomShadowVariable(variableListenerClass = StageChainingListener.class,
             sources = {@PlanningVariableReference(variableName = "week")})
-    @JsonIdentityReference
+    @JsonIdentityReference(alwaysAsId = true)
     private Stage next;
 
     @CustomShadowVariable(variableListenerClass = StageChainingListener.class,
             sources = {@PlanningVariableReference(variableName = "week")})
-    @JsonIdentityReference
+    @JsonIdentityReference(alwaysAsId = true)
     private Stage previous;
 
     @Override

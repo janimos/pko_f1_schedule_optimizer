@@ -4,7 +4,7 @@ $(document).ready(
             var listOfSchedules = $("#listofschedules");
             $.each(schedules, function (idx, value) {
                 listOfSchedules.append(
-                    $('<li><a href="schedule.html?id=' + value.solutionId + '">' + value.score + '</a>')
+                    $('<li><a href=' + value.solutionId + '"schedule.html?id=">' + value.score + '</a>')
                 )
             })
         })

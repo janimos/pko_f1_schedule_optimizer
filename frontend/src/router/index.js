@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/MainHome.vue';
-import SolutionDetails from '../components/SolutionDetails.vue';
+import ScheduleList from '../components/ScheduleList.vue';
+import ScheduleDetails from '../components/ScheduleDetails.vue';
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/solution/:id', component: SolutionDetails, props: true }
+    { path: '/', component: ScheduleList },
+    { path: '/schedule/:solutionId', component: ScheduleDetails, props: true }
 ];
 
 const router = createRouter({

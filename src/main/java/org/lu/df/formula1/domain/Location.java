@@ -18,13 +18,6 @@ public class Location {
     @JsonProperty("longitude")
     private Double longitude;
 
-    public Double simpleDistanceTo (Location location){
-        return Math.sqrt(
-            Math.pow(this.latitude - location.latitude, 2) +
-            Math.pow(this.longitude - location.longitude, 2)
-        );
-    }
-
     public Double distanceTo (Location location){
         final Double R = 6371.0;
 

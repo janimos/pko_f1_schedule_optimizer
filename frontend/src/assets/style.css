@@ -1,0 +1,105 @@
+.badge {
+    padding: 5px;
+    color: white;
+  }
+  
+  .bg-success {
+    background-color: green;
+  }
+  
+  .bg-danger {
+    background-color: red;
+  }
+  
+  .schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 16px;
+  }
+  
+  .schedule-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Left side 3fr and right side 1fr */
+    gap: 16px;
+  }
+  
+  .score-explanation,
+  .map-block,
+  .schedule-container{
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .grand-prix-schedule {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  
+  .grand-prix-schedule th,
+  .grand-prix-schedule td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .grand-prix-schedule th {
+    background-color: #f3f3f3;
+    text-align: center
+  }
+  
+  .schedule-content, /* This is the updated class */
+  .score-explanation {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .map-block {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 16px; /* Add margin-top to give some space above */
+  }
+  .score-content {
+    text-align: left
+  }
+  
+  .score-explanation-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 16px;
+  }
+  
+  .score-explanation-table th,
+  .score-explanation-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .score-explanation-table th {
+    background-color: #f3f3f3;
+    text-align: center
+  }
+  
+  .score-explanation-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .grand-prix-schedule td:nth-child(1),
+  .grand-prix-schedule td:nth-child(4),
+  .score-explanation-table td:nth-child(1),
+  .score-explanation-table td:nth-child(2) {
+    text-align: center
+  }

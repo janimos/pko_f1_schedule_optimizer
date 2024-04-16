@@ -9,6 +9,7 @@ export const useScheduleDetails = () => {
     const scoreBadge = ref('');
     const stages = ref([]);
     const indictmentMap = ref({});
+    //const scoreExplanationContent =ref('');
 
     const getHardScore = score => score.slice(0, score.indexOf("hard"));
 
@@ -22,16 +23,10 @@ export const useScheduleDetails = () => {
       return popoverContent;
     };*/
 
-    const getEntityPopoverContent = entityId => {
-        const indictment = indictmentMap.value[entityId];
-        if (!indictment) return '';
-        let popoverContent = `Total score: <b>${indictment.score}</b> (${indictment.matchCount})<br>`;
-        indictment.constraintMatches.forEach(match => {
-            popoverContent += getHardScore(match.score) === 0 ?
-                `${match.constraintName} : ${match.score}<br>` :
-                `<b>${match.constraintName} : ${match.score}</b><br>`;
-        });
-        return popoverContent;
+    const getScore = (constraintName, score) => {
+        return getHardScore(score) === 0 ?
+                `${constraintName} : ${score}` :
+                `${constraintName} : ${score}`;
     };
 
     const stageDisplay = stage => {
@@ -39,17 +34,17 @@ export const useScheduleDetails = () => {
     };
 
     onMounted(() => {
-        axios.get(`/schedules/score?id=${solutionId}`).then(response => {
+        axios.get(`/api/schedules/score?id=${solutionId}`).then(response => {
             const analysis = response.data;
             scoreText.value = analysis.score;
             scoreBadge.value = getHardScore(analysis.score) === 0 ? 'badge bg-success' : 'badge bg-danger';
         });
 
-        axios.get(`/schedules/solution?id=${solutionId}`).then(response => {
+        axios.get(`/api/schedules/solution?id=${solutionId}`).then(response => {
             const solution = response.data;
             stages.value = solution.stageList;
 
-            axios.get(`/schedules/indictments?id=${solutionId}`).then(response => {
+            axios.get(`/api/schedules/indictments?id=${solutionId}`).then(response => {
                 const indictments = response.data;
                 indictments.forEach(indictment => {
                     indictmentMap.value[indictment.indictedObjectID] = indictment;
@@ -58,5 +53,5 @@ export const useScheduleDetails = () => {
         });
     });
 
-    return {solutionId, scoreText, scoreBadge, stages, getEntityPopoverContent, stageDisplay};
+    return {solutionId, scoreText, scoreBadge, stages, indictmentMap, getScore, stageDisplay};
 };

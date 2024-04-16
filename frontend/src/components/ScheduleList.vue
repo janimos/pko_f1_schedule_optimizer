@@ -5,7 +5,7 @@ import axios from 'axios';
 const schedules = ref([]);
 
 onMounted(() => {
-  axios.get('/schedules/list')
+  axios.get('/api/schedules/list')
       .then(response => {
         schedules.value = response.data.map(schedule => ({
           id: schedule.solutionId,  // Adjust according to your API response
@@ -31,6 +31,6 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<script>
+import "../assets/style.css";
+</script>

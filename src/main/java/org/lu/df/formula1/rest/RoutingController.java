@@ -35,14 +35,12 @@ public class RoutingController {
 
     @PostMapping("/solve")
     public void solve(@RequestBody RoutingSolution problem) {
-        SolverJob<RoutingSolution, String> solverJob = solverManager.solveBuilder()
-                .withProblemId(problem.getSolutionId())
-                .withProblem(problem)
-                .run();
+        SolverJob<RoutingSolution, String> solverJob = solverManager.solve(problem.getSolutionId(),problem);
 
         try {
+            RoutingSolution solution = solverJob.getFinalBestSolution();
             // Wait until the solving ends
-            solutionMap.put(problem.getSolutionId(), solverJob.getFinalBestSolution());
+            solutionMap.put(solution.getSolutionId(), solution);
         } catch (InterruptedException | ExecutionException e) {
             throw new IllegalStateException("Solving failed.", e);
         }

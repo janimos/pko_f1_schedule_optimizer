@@ -31,7 +31,7 @@ public class StreamCalculator implements ConstraintProvider {
         return constraintFactory
                 .forEachUniquePair(Stage.class,
                         Joiners.equal(Stage::getWeek))
-                .penalize(HardSoftScore.ONE_HARD)
+                .penalize(HardSoftScore.ofHard(GlobalConstants.penaltyFactor))
                 .asConstraint("Grand Prix on unique week");
     }
 
@@ -49,7 +49,7 @@ public class StreamCalculator implements ConstraintProvider {
                     }
                     return false;  // Less than or equal to three stages in a row
                 })
-                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor)
+                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor * 3)
                 .asConstraint("Not more that 3 consecutive stages");
     }
 
@@ -59,7 +59,7 @@ public class StreamCalculator implements ConstraintProvider {
                     // Check if the week of the stage falls within the off weeks range
                     return GlobalConstants.getOffWeekRange().contains(stage.getWeek());
                 })
-                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor)
+                .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor * 4)
                 .asConstraint("No Stages During Off Weeks");
     }
 

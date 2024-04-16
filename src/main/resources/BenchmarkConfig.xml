@@ -17,7 +17,7 @@
 
             <!-- Configure the optimization algorithms (optional) -->
             <termination>
-                <secondsSpentLimit>5</secondsSpentLimit>
+                <secondsSpentLimit>30</secondsSpentLimit>
             </termination>
 
             <constructionHeuristic />
@@ -86,7 +86,7 @@
             </localSearch>
         </solver>
     </solverBenchmark>
-    
+
     <!-- Late Acceptance Configuration -->
     <solverBenchmark>
         <name>Late Acceptance Small</name>

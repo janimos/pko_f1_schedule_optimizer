@@ -1,82 +1,40 @@
 <template>
-  <div>
-    <div id="score_container">
-      <span :class="scoreBadge" v-html="scoreText"></span>
+  <div class="schedule-container">
+    <h2 class="schedule-title" v-html="'Schedule #' + solutionId"></h2>
+    <div class="main-content">
+      <section class="score-explanation">
+        <!-- Content for the Hard/Soft Score Explanation -->
+        Hard/Soft Score Explanation
+        <span :class="scoreBadge" v-html="scoreText"></span>
+      </section>
+      <aside class="map-block">
+        <!-- Content for the Map Block -->
+        Map Block
+      </aside>
     </div>
     <div id="schedule_container">
-      <a v-for="stage in stages" :key="stage.name"
-         data-bs-toggle="popover"
-         :data-bs-html="true"
-         :data-bs-content="getEntityPopoverContent(stage.name)"
-         :data-bs-original-title="stage.name"
-         v-html="stageDisplay(stage)"></a>
+      <table class="grand-prix-schedule">
+        <thead>
+        <tr>
+          <th>Week of Race</th>
+          <th>Grand Prix</th>
+          <th>Track</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="stage in stages" :key="stage.name">
+          <td>{{ stage.week }}</td>
+          <td>{{ stage.name }}</td>
+          <td>{{ stage.location.address }}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import {ref, onMounted} from 'vue';
-import {useRoute} from 'vue-router';
-
-export const useScheduleDetails = () => {
-  const route = useRoute();
-  const solutionId = route.params.solutionId;
-  const scoreText = ref('');
-  const scoreBadge = ref('');
-  const stages = ref([]);
-  const indictmentMap = ref({});
-
-  const getHardScore = score => score.slice(0, score.indexOf("hard"));
-
-  /*const getScorePopoverContent = constraintList => {
-    let popoverContent = "";
-    constraintList.forEach(constraint => {
-      popoverContent += getHardScore(constraint.score) === 0 ?
-          `${constraint.name} : ${constraint.score}<br>` :
-          `<b>${constraint.name} : ${constraint.score}</b><br>`;
-    });
-    return popoverContent;
-  };*/
-
-  const getEntityPopoverContent = entityId => {
-    const indictment = indictmentMap.value[entityId];
-    if (!indictment) return '';
-    let popoverContent = `Total score: <b>${indictment.score}</b> (${indictment.matchCount})<br>`;
-    indictment.constraintMatches.forEach(match => {
-      popoverContent += getHardScore(match.score) === 0 ?
-          `${match.constraintName} : ${match.score}<br>` :
-          `<b>${match.constraintName} : ${match.score}</b><br>`;
-    });
-    return popoverContent;
-  };
-
-  const stageDisplay = stage => {
-    return `<span class="${indictmentMap.value[stage.name] == null || getHardScore(indictmentMap.value[stage.name].score) === 0 ? 'badge bg-success' : 'badge bg-danger'}">${stage.name}</span>`;
-  };
-
-  onMounted(() => {
-    axios.get(`/schedules/score?id=${solutionId}`).then(response => {
-      const analysis = response.data;
-      scoreText.value = analysis.score;
-      scoreBadge.value = getHardScore(analysis.score) === 0 ? 'badge bg-success' : 'badge bg-danger';
-    });
-
-    axios.get(`/schedules/solution?id=${solutionId}`).then(response => {
-      const solution = response.data;
-      stages.value = solution.stageList;
-
-      axios.get(`/schedules/indictments?id=${solutionId}`).then(response => {
-        const indictments = response.data;
-        indictments.forEach(indictment => {
-          indictmentMap.value[indictment.indictedObjectID] = indictment;
-        });
-      });
-    });
-  });
-
-  return {scoreText, scoreBadge, stages, getEntityPopoverContent, stageDisplay};
-};
+import { useScheduleDetails} from "@/logic/ScheduleDetailsLogic";
 
 export default {
   name: 'ScheduleDetails',
@@ -98,5 +56,49 @@ export default {
 
 .bg-danger {
   background-color: red;
+}
+
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px;
+}
+
+.schedule-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 16px;
+}
+
+.score-explanation,
+.map-block,
+.schedule-container{
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.grand-prix-schedule {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.grand-prix-schedule th,
+.grand-prix-schedule td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.grand-prix-schedule th {
+  background-color: #f3f3f3;
 }
 </style>

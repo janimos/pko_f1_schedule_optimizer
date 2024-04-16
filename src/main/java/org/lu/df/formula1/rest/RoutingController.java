@@ -50,7 +50,9 @@ public class RoutingController {
 
     @GetMapping("/solution")
     public RoutingSolution solution(@RequestParam("id") String id) {
-        return solutionMap.get(id);
+        RoutingSolution solution = solutionMap.get(id);
+        solution.reorderSchedule();
+        return solution;
     }
 
     @GetMapping("/list")

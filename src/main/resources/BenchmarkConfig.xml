@@ -35,7 +35,7 @@
         </problemBenchmarks>
     </inheritedSolverBenchmark>
 
-    <!-- Tabu Search Configurations
+    <!-- Tabu Search Configurations -->
     <solverBenchmark>
         <name>Tabu Search Small</name>
         <solver>
@@ -86,53 +86,8 @@
             </localSearch>
         </solver>
     </solverBenchmark>
-    -->
-
-    <!-- Simulated Annealing Configuration -->
-    <solverBenchmark>
-        <name>Simulated Annealing Small</name>
-        <solver>
-            <localSearch>
-                <acceptor>
-                    <simulatedAnnealingStartingTemperature>1hard/100soft</simulatedAnnealingStartingTemperature>
-                </acceptor>
-                <forager>
-                    <acceptedCountLimit>1</acceptedCountLimit>
-                </forager>
-            </localSearch>
-        </solver>
-    </solverBenchmark>
-
-    <solverBenchmark>
-        <name>Simulated Annealing Medium</name>
-        <solver>
-            <localSearch>
-                <acceptor>
-                    <simulatedAnnealingStartingTemperature>2hard/100soft</simulatedAnnealingStartingTemperature>
-                </acceptor>
-                <forager>
-                    <acceptedCountLimit>2</acceptedCountLimit>
-                </forager>
-            </localSearch>
-        </solver>
-    </solverBenchmark>
-
-    <solverBenchmark>
-        <name>Simulated Annealing Large</name>
-        <solver>
-            <localSearch>
-                <acceptor>
-                    <simulatedAnnealingStartingTemperature>4hard/100soft</simulatedAnnealingStartingTemperature>
-                </acceptor>
-                <forager>
-                    <acceptedCountLimit>4</acceptedCountLimit>
-                </forager>
-            </localSearch>
-        </solver>
-    </solverBenchmark>
-
-
-    <!-- Late Acceptance Configuration
+    
+    <!-- Late Acceptance Configuration -->
     <solverBenchmark>
         <name>Late Acceptance Small</name>
         <solver>
@@ -183,22 +138,5 @@
             </localSearch>
         </solver>
     </solverBenchmark>
-    -->
-
-    <!-- Hill Climbing Configuration
-    <solverBenchmark>
-        <name>Hill Climbing</name>
-        <solver>
-            <localSearch>
-                <acceptor>
-                    <acceptorType>HILL_CLIMBING</acceptorType>
-                </acceptor>
-                <forager>
-                    <acceptedCountLimit>1</acceptedCountLimit>
-                </forager>
-            </localSearch>
-        </solver>
-    </solverBenchmark>
-    -->
 
 </plannerBenchmark>

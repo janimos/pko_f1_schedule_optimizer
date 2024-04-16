@@ -25,6 +25,15 @@
       </section>
       <aside class="map-block">
         <h3>Grand Prix Schedule Map</h3>
+        <div class="map-content">
+          <l-map ref="map" v-model:zoom="zoom" :center="[47.41322, -1.219482]">
+            <l-tile-layer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              layer-type="base"
+              name="OpenStreetMap"
+            ></l-tile-layer>
+          </l-map>
+        </div>
       </aside>
     </div>
     <section class="score-explanation">
@@ -63,10 +72,22 @@
 import { useScheduleDetails} from "@/logic/ScheduleDetailsLogic";
 import "../assets/style.css";
 
+import "leaflet/dist/leaflet.css";
+import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
+
 export default {
   name: 'ScheduleDetails',
   setup() {
     return useScheduleDetails();
-  }
+  },
+  components: {
+    LMap,
+    LTileLayer,
+  },
+  data() {
+    return {
+      zoom: 1,
+    };
+  },
 };
 </script>

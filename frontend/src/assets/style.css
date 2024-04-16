@@ -103,3 +103,56 @@
   .score-explanation-table td:nth-child(2) {
     text-align: center
   }
+
+  .map-content {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: row; /* Align children in a row */
+    gap: 20px; /* Adjust the gap as needed */
+    align-items: flex-start; /* Align children at the top */
+    margin-bottom: 20px; /* Space below the main content */
+  }
+  
+  .schedule-content,
+  .map-block {
+    flex: 1; /* Both children should take equal width */
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .schedule-content {
+    max-width: 60%; /* Limit width to allow for the map to show properly */
+  }
+  
+  .map-block {
+    flex-grow: 2; /* Map should take more space if available */
+    height: 400px; /* Fixed height for the map container */
+  }
+  
+  .grand-prix-schedule {
+    width: 100%; /* Full width of its container */
+    border-collapse: collapse;
+    margin-bottom: 16px; /* Space below the table */
+  }
+  
+  .grand-prix-schedule th,
+  .grand-prix-schedule td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .grand-prix-schedule th {
+    background-color: #f3f3f3;
+  }
+  
+  .map-content {
+    height: 100%; /* Full height of its container */
+  }

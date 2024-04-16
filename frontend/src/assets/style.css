@@ -1,14 +1,16 @@
-.badge {
+  .badge {
     padding: 5px;
     color: white;
   }
   
   .bg-success {
     background-color: green;
+    border-radius: 4px;
   }
   
   .bg-danger {
     background-color: red;
+    border-radius: 4px;
   }
   
   .schedule-container {
@@ -26,16 +28,8 @@
   
   .main-content {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Left side 3fr and right side 1fr */
+    grid-template-columns: 1fr 3fr; /* Left side 3fr and right side 1fr */
     gap: 16px;
-  }
-  
-  .score-explanation,
-  .map-block,
-  .schedule-container{
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 8px;
   }
   
   .grand-prix-schedule {
@@ -43,7 +37,7 @@
     border-collapse: collapse;
     margin-top: 16px;
   }
-  
+
   .grand-prix-schedule th,
   .grand-prix-schedule td {
     border: 1px solid #ddd;
@@ -57,20 +51,15 @@
   }
   
   .schedule-content, /* This is the updated class */
-  .score-explanation {
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 8px;
-  }
-  
+  .score-explanation,
   .map-block {
     border: 1px solid #ddd;
     padding: 16px;
     border-radius: 8px;
-    margin-top: 16px; /* Add margin-top to give some space above */
   }
+
   .score-content {
-    text-align: left
+    text-align: left;
   }
   
   .score-explanation-table table {
@@ -93,7 +82,13 @@
   
   .score-explanation-table ul {
     list-style: none;
-    padding: 0;
+    padding: 0.5%;
+    margin: 0;
+  }
+
+  .score-explanation-table ul li {
+    list-style: none;
+    padding: 0.5%;
     margin: 0;
   }
   
@@ -103,56 +98,35 @@
   .score-explanation-table td:nth-child(2) {
     text-align: center
   }
+  
+  .schedule-content,
+  .map-block {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .grand-prix-schedule-container,
   .map-content {
-    width: 100%;
-    height: 100%;
-    align-items: center;
+    flex: 1;
   }
 
   .main-content {
     display: flex;
-    flex-direction: row; /* Align children in a row */
-    gap: 20px; /* Adjust the gap as needed */
-    align-items: flex-start; /* Align children at the top */
-    margin-bottom: 20px; /* Space below the main content */
+    flex-direction: row;
+    align-items: stretch;
   }
-  
-  .schedule-content,
-  .map-block {
-    flex: 1; /* Both children should take equal width */
-    padding: 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-  }
-  
+
   .schedule-content {
-    max-width: 60%; /* Limit width to allow for the map to show properly */
+    /* This will make the schedule-content only take up as much space as needed for its content */
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: auto; /* Or set to the width that you want it to have */
   }
   
   .map-block {
-    flex-grow: 2; /* Map should take more space if available */
-    height: 400px; /* Fixed height for the map container */
-  }
-  
-  .grand-prix-schedule {
-    width: 100%; /* Full width of its container */
-    border-collapse: collapse;
-    margin-bottom: 16px; /* Space below the table */
-  }
-  
-  .grand-prix-schedule th,
-  .grand-prix-schedule td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .grand-prix-schedule th {
-    background-color: #f3f3f3;
-  }
-  
-  .map-content {
-    height: 100%; /* Full height of its container */
+    /* This will allow the map-block to grow and take the remaining space */
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%; /* This will make sure it takes the remaining space */
+    /* Remove the max-width if you have set it previously */
   }

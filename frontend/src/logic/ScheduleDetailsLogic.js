@@ -9,19 +9,12 @@ export const useScheduleDetails = () => {
     const scoreBadge = ref('');
     const stages = ref([]);
     const indictmentMap = ref({});
-    //const scoreExplanationContent =ref('');
+    //const mapRef = ref('map');
+    const markers = ref([]);
+    const polylines = ref([]);
+    //const center = ref([47.41322, -1.219482]);
 
     const getHardScore = score => score.slice(0, score.indexOf("hard"));
-
-    /*const getScorePopoverContent = constraintList => {
-      let popoverContent = "";
-      constraintList.forEach(constraint => {
-        popoverContent += getHardScore(constraint.score) === 0 ?
-            `${constraint.name} : ${constraint.score}<br>` :
-            `<b>${constraint.name} : ${constraint.score}</b><br>`;
-      });
-      return popoverContent;
-    };*/
 
     const getScore = (constraintName, score) => {
         return getHardScore(score) === 0 ?
@@ -29,10 +22,24 @@ export const useScheduleDetails = () => {
                 `${constraintName} : ${score}`;
     };
 
-    const stageDisplay = stage => {
-        return `<span class="${indictmentMap.value[stage.name] == null || getHardScore(indictmentMap.value[stage.name].score) === 0 ? 'badge bg-success' : 'badge bg-danger'}">${stage.name}</span>`;
+    const setMapStageLocations = () => {
+        markers.value = stages.value.map(stage => ({
+            latLng: [stage.location.latitude, stage.location.longitude],
+            stageName: stage.name
+        }));
     };
 
+    // Inside your setMapStageLocations function or after you have all your stages
+    const setMapPolylines = () => {
+        const polylineLatLngs = markers.value.map(marker => marker.latLng);
+
+        polylines.value = [polylineLatLngs];
+    };
+
+    const getCenter = () => {
+        return markers.value.length > 0 ? markers.value[0].latLng : [47.41322, -1.219482];
+    };
+    
     onMounted(() => {
         axios.get(`/api/schedules/score?id=${solutionId}`).then(response => {
             const analysis = response.data;
@@ -44,6 +51,10 @@ export const useScheduleDetails = () => {
             const solution = response.data;
             stages.value = solution.stageList;
 
+            setMapStageLocations();
+            setMapPolylines();
+            //getCenter();
+
             axios.get(`/api/schedules/indictments?id=${solutionId}`).then(response => {
                 const indictments = response.data;
                 indictments.forEach(indictment => {
@@ -51,7 +62,9 @@ export const useScheduleDetails = () => {
                 });
             });
         });
+
+        
     });
 
-    return {solutionId, scoreText, scoreBadge, stages, indictmentMap, getScore, stageDisplay};
+    return {solutionId, scoreText, scoreBadge, stages, indictmentMap, markers, polylines, getScore, getCenter};
 };

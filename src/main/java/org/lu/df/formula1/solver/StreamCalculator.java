@@ -32,7 +32,7 @@ public class StreamCalculator implements ConstraintProvider {
                 .forEachUniquePair(Stage.class,
                         Joiners.equal(Stage::getWeek))
                 .penalize(HardSoftScore.ONE_HARD)
-                .asConstraint("uniqueWeeksConstraint");
+                .asConstraint("Grand Prix on unique week");
     }
 
     public Constraint maxThreeStagesInARow(ConstraintFactory constraintFactory) {
@@ -50,7 +50,7 @@ public class StreamCalculator implements ConstraintProvider {
                     return false;  // Less than or equal to three stages in a row
                 })
                 .penalize(HardSoftScore.ONE_HARD, stage -> GlobalConstants.penaltyFactor)
-                .asConstraint("maxThreeStagesInARow");
+                .asConstraint("Not more that 3 consecutive stages");
     }
 
     public Constraint noStagesDuringOffWeeks(ConstraintFactory constraintFactory) {
@@ -73,7 +73,7 @@ public class StreamCalculator implements ConstraintProvider {
 
                     return (int) Math.round(stageIncome - stageCost);
                 })
-                .asConstraint("costIncomeDifferenceConstraint");
+                .asConstraint("Total income");
     }
 
     public Constraint weekDifferenceConstraint(ConstraintFactory constraintFactory) {
@@ -91,7 +91,7 @@ public class StreamCalculator implements ConstraintProvider {
                             // Apply a penalty for the excessive gap, you can adjust the factor based on how severe you want the penalty to be
                             return weekDifference * GlobalConstants.penaltyFactor;
                         })
-                .asConstraint("weekDifferenceConstraint");
+                .asConstraint("Week gap more that 3 weeks between two Grand Prix");
     }
 
     public Constraint stageSequenceConstraint(ConstraintFactory constraintFactory) {

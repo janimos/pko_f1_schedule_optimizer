@@ -17,7 +17,7 @@
 
             <!-- Configure the optimization algorithms (optional) -->
             <termination>
-                <secondsSpentLimit>10</secondsSpentLimit>
+                <secondsSpentLimit>5</secondsSpentLimit>
             </termination>
 
             <constructionHeuristic />
@@ -25,51 +25,76 @@
        <problemBenchmarks>
             <solutionFileIOClass>org.lu.df.formula1.domain.RoutingSolutionJsonIO</solutionFileIOClass>
             <writeOutputSolutionEnabled>true</writeOutputSolutionEnabled>
+            <inputSolutionFile>data/problems/problem_5_5.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_5_10.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_2023_6.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_2023_10.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_2023_15.json</inputSolutionFile>
+            <inputSolutionFile>data/problems/problem_2023_20.json</inputSolutionFile>
             <inputSolutionFile>data/problems/problem_2023_full.json</inputSolutionFile>
         </problemBenchmarks>
     </inheritedSolverBenchmark>
 
+    <!-- Tabu Search Configurations
     <solverBenchmark>
-        <name>Tabu 5 500</name>
+        <name>Tabu Search Small</name>
         <solver>
             <localSearch>
                 <unionMoveSelector>
                     <changeMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
-                    <valueTabuSize>5</valueTabuSize>
+                    <valueTabuSize>2</valueTabuSize>
                 </acceptor>
                 <forager>
-                    <acceptedCountLimit>500</acceptedCountLimit>
+                    <acceptedCountLimit>200</acceptedCountLimit>
                 </forager>
             </localSearch>
         </solver>
     </solverBenchmark>
+
     <solverBenchmark>
-        <name>Tabu 10 1000</name>
+        <name>Tabu Search Medium</name>
         <solver>
             <localSearch>
                 <unionMoveSelector>
                     <changeMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
-                    <valueTabuSize>10</valueTabuSize>
+                    <valueTabuSize>7</valueTabuSize>
                 </acceptor>
                 <forager>
-                    <acceptedCountLimit>1000</acceptedCountLimit>
+                    <acceptedCountLimit>700</acceptedCountLimit>
                 </forager>
             </localSearch>
         </solver>
     </solverBenchmark>
+
     <solverBenchmark>
-        <name>LAHC 400</name>
+        <name>Tabu Search Large</name>
         <solver>
             <localSearch>
                 <unionMoveSelector>
                     <changeMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
-                    <lateAcceptanceSize>400</lateAcceptanceSize>
+                    <valueTabuSize>15</valueTabuSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>1500</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+    -->
+
+    <!-- Simulated Annealing Configuration -->
+    <solverBenchmark>
+        <name>Simulated Annealing Small</name>
+        <solver>
+            <localSearch>
+                <acceptor>
+                    <simulatedAnnealingStartingTemperature>1hard/100soft</simulatedAnnealingStartingTemperature>
                 </acceptor>
                 <forager>
                     <acceptedCountLimit>1</acceptedCountLimit>
@@ -77,5 +102,103 @@
             </localSearch>
         </solver>
     </solverBenchmark>
+
+    <solverBenchmark>
+        <name>Simulated Annealing Medium</name>
+        <solver>
+            <localSearch>
+                <acceptor>
+                    <simulatedAnnealingStartingTemperature>2hard/100soft</simulatedAnnealingStartingTemperature>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>2</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>Simulated Annealing Large</name>
+        <solver>
+            <localSearch>
+                <acceptor>
+                    <simulatedAnnealingStartingTemperature>4hard/100soft</simulatedAnnealingStartingTemperature>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>4</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+
+    <!-- Late Acceptance Configuration
+    <solverBenchmark>
+        <name>Late Acceptance Small</name>
+        <solver>
+            <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <lateAcceptanceSize>200</lateAcceptanceSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>1</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>Late Acceptance Medium</name>
+        <solver>
+            <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <lateAcceptanceSize>500</lateAcceptanceSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>5</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>Late Acceptance Large</name>
+        <solver>
+            <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <lateAcceptanceSize>1000</lateAcceptanceSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>10</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+    -->
+
+    <!-- Hill Climbing Configuration
+    <solverBenchmark>
+        <name>Hill Climbing</name>
+        <solver>
+            <localSearch>
+                <acceptor>
+                    <acceptorType>HILL_CLIMBING</acceptorType>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>1</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+    -->
 
 </plannerBenchmark>

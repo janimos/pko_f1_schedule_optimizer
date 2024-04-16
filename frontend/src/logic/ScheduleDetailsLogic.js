@@ -41,13 +41,13 @@ export const useScheduleDetails = () => {
     };
     
     onMounted(() => {
-        axios.get(`/api/schedules/score?id=${solutionId}`).then(response => {
+        axios.get(`/schedules/score?id=${solutionId}`).then(response => {
             const analysis = response.data;
             scoreText.value = analysis.score;
             scoreBadge.value = getHardScore(analysis.score) === 0 ? 'badge bg-success' : 'badge bg-danger';
         });
 
-        axios.get(`/api/schedules/solution?id=${solutionId}`).then(response => {
+        axios.get(`/schedules/solution?id=${solutionId}`).then(response => {
             const solution = response.data;
             stages.value = solution.stageList;
 
@@ -55,7 +55,7 @@ export const useScheduleDetails = () => {
             setMapPolylines();
             //getCenter();
 
-            axios.get(`/api/schedules/indictments?id=${solutionId}`).then(response => {
+            axios.get(`/schedules/indictments?id=${solutionId}`).then(response => {
                 const indictments = response.data;
                 indictments.forEach(indictment => {
                     indictmentMap.value[indictment.indictedObjectID] = indictment;

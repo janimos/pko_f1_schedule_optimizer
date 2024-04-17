@@ -106,7 +106,7 @@ public class StreamCalculator implements ConstraintProvider {
         return constraintFactory.forEach(Stage.class)
                 .penalize(HardSoftScore.ONE_SOFT, stage -> {
                     Double distance = Calculations.getStageTravelDistance(stage);
-                    return (int) Math.round(distance * GlobalConstants.emissionsPricePerKilometer() * GlobalConstants.estimatedEmployeeAmount / 10000);
+                    return (int) Math.round(distance * GlobalConstants.emissionsPricePerKilometer() * GlobalConstants.estimatedEmployeeAmount / 10000 );
                 }).asConstraint("Minimize Travel Emissions");
     }
 

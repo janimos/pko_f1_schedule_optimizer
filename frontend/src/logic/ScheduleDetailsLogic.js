@@ -9,10 +9,8 @@ export const useScheduleDetails = () => {
     const scoreBadge = ref('');
     const stages = ref([]);
     const indictmentMap = ref({});
-    //const mapRef = ref('map');
     const markers = ref([]);
     const polylines = ref([]);
-    //const center = ref([47.41322, -1.219482]);
 
     const getHardScore = score => score.slice(0, score.indexOf("hard"));
 
@@ -53,7 +51,6 @@ export const useScheduleDetails = () => {
 
             setMapStageLocations();
             setMapPolylines();
-            //getCenter();
 
             axios.get(`/schedules/indictments?id=${solutionId}`).then(response => {
                 const indictments = response.data;

@@ -7,11 +7,15 @@ import ai.timefold.solver.core.api.solver.SolutionManager;
 import ai.timefold.solver.core.api.solver.SolverJob;
 import ai.timefold.solver.core.api.solver.SolverManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.json.JSONObject;
 import org.lu.df.formula1.ProblemGenerator;
 import org.lu.df.formula1.domain.RoutingSolution;
+import org.lu.df.formula1.domain.Stage;
 import org.lu.df.formula1.solver.SimpleIndictmentObject;
+import org.lu.df.formula1.utilities.Calculations;
 import org.lu.df.formula1.utilities.GlobalConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.Distance;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -90,5 +94,34 @@ public class RoutingController {
     @GetMapping("/createProblem")
     public String createProblem(@RequestParam("fileName") String fileName) throws JsonProcessingException {
         return ProblemGenerator.generateProblem(fileName);
+    }
+
+    @GetMapping("/solutionData")
+    public Map<String, Object> solutionData(@RequestParam("id") String id) {
+        RoutingSolution solution = solutionMap.get(id);
+        JSONObject content = new JSONObject();
+
+        Double income = 0.0;
+        Double costs = 0.0;
+        Double distance = 0.0;
+        Double emissions = 0.0;
+
+        for (Stage stage : solution.getStageList()) {
+            income += Calculations.getStageIncome(stage);
+        }
+        for (Stage stage : solution.getStageList()) {
+            distance += Calculations.getStageTravelDistance(stage);
+            costs += Calculations.getTravelCost(distance);
+        }
+
+        emissions += distance * GlobalConstants.emissionsKgPerKilometer;
+
+        content.put("income", Math.round(income * 100.0) / 100.0);
+        content.put("costs", Math.round(costs * 100.0) / 100.0);
+        content.put("totalIncome", Math.round((income - costs) * 100.0) / 100.0);
+        content.put("distance", Math.round(distance * 100.0) / 100.0);
+        content.put("emissions", Math.round(emissions * 100.0) / 100.0);
+
+        return content.toMap();
     }
 }

@@ -49,7 +49,7 @@ public class GlobalConstants {
 
     // Data source: https://www.dw.com/en/trains-vs-planes-whats-the-real-cost-of-travel/a-45209552
     private static final Double emissionsPricePerTon = 38.69;
-    private static final Double emissionsKgPerKilometer = 0.32;
+    public static final Double emissionsKgPerKilometer = 0.32;
 
     public static Double emissionsPricePerKilometer() {
         return emissionsKgPerKilometer * (emissionsPricePerTon / 1000);

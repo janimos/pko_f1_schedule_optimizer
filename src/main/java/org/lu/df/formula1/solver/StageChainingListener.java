@@ -31,6 +31,10 @@ public class StageChainingListener implements VariableListener<RoutingSolution, 
             scoreDirector.beforeVariableChanged(previousStage, "next");
             previousStage.setNext(stage);
             scoreDirector.afterVariableChanged(previousStage, "next");
+        } else {
+            scoreDirector.beforeVariableChanged(stage, "previous");
+            stage.setHeadquarters(true);
+            scoreDirector.afterVariableChanged(stage, "previous");
         }
 
         // Find and set the next stage
@@ -43,7 +47,12 @@ public class StageChainingListener implements VariableListener<RoutingSolution, 
             scoreDirector.beforeVariableChanged(nextStage, "previous");
             nextStage.setPrevious(stage);
             scoreDirector.afterVariableChanged(nextStage, "previous");
+        } else {
+            scoreDirector.beforeVariableChanged(stage, "next");
+            stage.setHeadquarters(false);
+            scoreDirector.afterVariableChanged(stage, "next");
         }
+
     }
 
     @Override

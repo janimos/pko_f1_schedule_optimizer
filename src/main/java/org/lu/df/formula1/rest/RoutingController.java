@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.lu.df.formula1.ProblemGenerator;
 import org.lu.df.formula1.domain.RoutingSolution;
 import org.lu.df.formula1.solver.SimpleIndictmentObject;
+import org.lu.df.formula1.utilities.GlobalConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,15 @@ public class RoutingController {
 
     private Map<String, RoutingSolution> solutionMap = new HashMap<>();
 
+    private void initConstants(RoutingSolution problem) {
+        GlobalConstants.setStartEndWeek(problem.getStartWeek(), problem.getEndWeek());
+        GlobalConstants.setOffWeeks(problem.getOffWeekStart(), problem.getOffWeekEnd());
+        GlobalConstants.setStageCount(problem.getStageList().size());
+    }
+
     @PostMapping("/solve")
     public void solve(@RequestBody RoutingSolution problem) {
+        initConstants(problem);
         SolverJob<RoutingSolution, String> solverJob = solverManager.solve(problem.getSolutionId(),problem);
 
         try {

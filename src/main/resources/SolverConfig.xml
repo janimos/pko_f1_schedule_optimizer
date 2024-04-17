@@ -15,7 +15,8 @@
 
     <!-- Configure the optimization algorithms (optional) -->
     <termination>
-        <secondsSpentLimit>1200</secondsSpentLimit>
+        <secondsSpentLimit>10</secondsSpentLimit>
+        <!--<bestScoreFeasible>1</bestScoreFeasible>-->
     </termination>
 
     <constructionHeuristic />

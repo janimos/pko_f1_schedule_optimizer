@@ -48,4 +48,9 @@ public class Stage {
     public String toString(){
         return this.getName();
     }
+
+    public void setHeadquarters(Boolean first) {
+        if (first) previous = null;
+        else next = null;
+    }
 }

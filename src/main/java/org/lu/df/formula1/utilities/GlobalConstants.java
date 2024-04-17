@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.lu.df.formula1.domain.Location;
 
-
 public class GlobalConstants {
     @Getter
     private static int startWeek;
@@ -43,7 +42,7 @@ public class GlobalConstants {
 
     public static final int weekCounter = 9;
 
-    public static final Double priceDelimiter = Math.pow(10, 6);
+    public static final Double priceDelimiter = Math.pow(10, 5);
 
     // Data source: ticket prices for Formula 1 2023 season schedule, average
     public static final Double averagePrice = 487.87;
@@ -62,4 +61,7 @@ public class GlobalConstants {
     public static final int estimatedEmployeeAmount = 3000; // Assumption, all teams have around 600-700 employees at GP + number of Formula 1 and FIA employees
 
     public static final int penaltyFactor = 5;
+
+    public static final int toleranceThreshold = 1; // or any other appropriate value
+
 }

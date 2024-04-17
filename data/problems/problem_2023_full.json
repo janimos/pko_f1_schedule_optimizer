@@ -335,6 +335,6 @@
   } ],
   "startWeek" : 0,
   "endWeek" : 40,
-  "offWeekStart" : 22,
-  "offWeekEnd" : 25
+  "offWeekStart" : 21,
+  "offWeekEnd" : 24
 }

@@ -30,17 +30,11 @@ public class GlobalConstants {
         offWeekEnd = end;
     }
 
-    public static CountableValueRange<Integer> getOffWeekRange() {
-        return ValueRangeFactory.createIntValueRange(offWeekStart, offWeekEnd);
-    }
-
     public static final Location headquarters = new Location(
             "2 St. James's Market, London, U.K.",
             51.0,
             0.0
     );
-
-    public static final int weekCounter = 9;
 
     public static final Double priceDelimiter = Math.pow(10, 6);
 

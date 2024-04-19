@@ -13,14 +13,13 @@ public class StreamCalculator implements ConstraintProvider {
     @Override
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[] {
+                // Hard scores
                 uniqueWeeksConstraint(constraintFactory),
                 maxThreeStagesInARow(constraintFactory),
                 noStagesDuringOffWeeks(constraintFactory),
 
-                //costIncomeDifferenceConstraint(constraintFactory),
+                // Soft scores
                 weekDifferenceConstraint(constraintFactory),
-                //minimizeTravelDistance(constraintFactory),
-                //minimizeTravelEmissions(constraintFactory),
                 minimizeTravelCosts(constraintFactory),
                 maximizeAttendanceAndIncome(constraintFactory),
                 balancedDistribution(constraintFactory),
@@ -61,19 +60,6 @@ public class StreamCalculator implements ConstraintProvider {
                 .asConstraint("No Stages During Off Weeks");
     }
 
-
-    public Constraint costIncomeDifferenceConstraint(ConstraintFactory constraintFactory) {
-        return constraintFactory
-                .forEach(Stage.class)
-                .impact(HardSoftScore.ONE_SOFT, stage -> {
-                    Double stageIncome = Calculations.getStageIncome(stage);
-                    Double stageCost = Calculations.getTravelCost(Calculations.getStageTravelDistance(stage));
-
-                    return (int) Math.round(stageIncome - stageCost);
-                })
-                .asConstraint("Total income");
-    }
-
     public Constraint weekDifferenceConstraint(ConstraintFactory constraintFactory) {
         return constraintFactory.forEach(Stage.class)
                 .filter(stage -> stage.getNext() != null)
@@ -94,21 +80,6 @@ public class StreamCalculator implements ConstraintProvider {
                         (GlobalConstants.pricePerKilometer + GlobalConstants.emissionsPricePerKilometer() + Calculations.getCargoCost()) *
                         GlobalConstants.estimatedEmployeeAmount / GlobalConstants.priceDelimiter
                 )).asConstraint("Minimize Travel Costs");
-    }
-
-    public Constraint minimizeTravelDistance(ConstraintFactory constraintFactory) {
-        return constraintFactory.forEach(Stage.class)
-                .penalize(HardSoftScore.ONE_SOFT,
-                        stage -> (int) Math.round(Calculations.getStageTravelDistance(stage)))
-                .asConstraint("Minimize Travel Distance");
-    }
-
-    public Constraint minimizeTravelEmissions(ConstraintFactory constraintFactory) {
-        return constraintFactory.forEach(Stage.class)
-                .penalize(HardSoftScore.ONE_SOFT, stage -> {
-                    Double distance = Calculations.getStageTravelDistance(stage);
-                    return (int) Math.round(distance * GlobalConstants.emissionsPricePerKilometer() * GlobalConstants.estimatedEmployeeAmount / 10000 );
-                }).asConstraint("Minimize Travel Emissions");
     }
 
     public Constraint maximizeAttendanceAndIncome(ConstraintFactory constraintFactory) {

@@ -16,7 +16,7 @@
             </thead>
             <tbody>
             <tr v-for="stage in stages" :key="stage.name">
-              <td>{{ stage.week }}</td>
+              <td>{{ stage.week + 9 }}</td>
               <td>{{ stage.name }}</td>
               <td>{{ stage.location.address }}</td>
               <td>{{ stage.attendance[stage.week] }}</td>
@@ -45,11 +45,30 @@
     </div>
     <section class="schedule-data">
       <h3>Schedule details</h3>
-      <p>Schedule income: {{ scheduleData.income }} EUR</p>
-      <p>Schedule costs: {{ scheduleData.costs }} EUR</p>
-      <p>Schedule total income: {{ scheduleData.totalIncome }} EUR</p>
-      <p>Schedule traveling distance: {{ scheduleData.distance }} KM</p>
-      <p>Schedule traveling emissions: {{ scheduleData.emissions }} KG</p>
+      <table class="schedule-info-table">
+        <tbody>
+          <tr>
+            <th>Attendance income</th>
+            <td>€ {{ scheduleData.income }} M</td>
+          </tr>
+          <tr>
+            <th>Costs</th>
+            <td>€ {{ scheduleData.costs }} M</td>
+          </tr>
+          <tr>
+            <th>Total income</th>
+            <td>€ {{ scheduleData.totalIncome }} M</td>
+          </tr>
+          <tr>
+            <th>Traveling distance</th>
+            <td>{{ scheduleData.distance }} Km</td>
+          </tr>
+          <tr>
+            <th>Traveling emissions</th>
+            <td>{{ scheduleData.emissions }} Kg</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
     <section class="score-explanation">
         <!-- Content for the Hard/Soft Score Explanation -->

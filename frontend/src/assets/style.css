@@ -135,3 +135,21 @@
   .schedule-data p {
     text-align: center;
   }
+
+  .schedule-info-table {
+    width: 100%; /* Or any other width as per your design */
+    border-collapse: collapse;
+    margin-top: 16px; /* Space above the table */
+  }
+  
+  .schedule-info-table th,
+  .schedule-info-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .schedule-info-table th {
+    background-color: #f3f3f3;
+    width: 50%; /* Adjust as necessary for your layout */
+  }

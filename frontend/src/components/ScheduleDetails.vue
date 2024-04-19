@@ -43,6 +43,14 @@
         </div>
       </aside>
     </div>
+    <section class="schedule-data">
+      <h3>Schedule details</h3>
+      <p>Schedule income: {{ scheduleData.income }} EUR</p>
+      <p>Schedule costs: {{ scheduleData.costs }} EUR</p>
+      <p>Schedule total income: {{ scheduleData.totalIncome }} EUR</p>
+      <p>Schedule traveling distance: {{ scheduleData.distance }} KM</p>
+      <p>Schedule traveling emissions: {{ scheduleData.emissions }} KG</p>
+    </section>
     <section class="score-explanation">
         <!-- Content for the Hard/Soft Score Explanation -->
         <h3>Hard/Soft Score Explanation</h3>

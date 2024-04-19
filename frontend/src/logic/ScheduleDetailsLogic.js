@@ -11,6 +11,7 @@ export const useScheduleDetails = () => {
     const indictmentMap = ref({});
     const markers = ref([]);
     const polylines = ref([]);
+    const scheduleData = ref({});
 
     const getHardScore = score => score.slice(0, score.indexOf("hard"));
 
@@ -58,10 +59,18 @@ export const useScheduleDetails = () => {
                     indictmentMap.value[indictment.indictedObjectID] = indictment;
                 });
             });
+
+            axios.get(`/schedules/solutionData?id=${solutionId}`).then(response => {
+                scheduleData.value["income"] = response.data.income;
+                scheduleData.value["costs"] = response.data.costs;
+                scheduleData.value["totalIncome"] = response.data.totalIncome;
+                scheduleData.value["distance"] = response.data.distance;
+                scheduleData.value["emissions"] = response.data.emissions;
+            });
         });
 
         
     });
 
-    return {solutionId, scoreText, scoreBadge, stages, indictmentMap, markers, polylines, getScore, getCenter};
+    return {solutionId, scoreText, scoreBadge, stages, indictmentMap, markers, polylines, scheduleData, getScore, getCenter};
 };

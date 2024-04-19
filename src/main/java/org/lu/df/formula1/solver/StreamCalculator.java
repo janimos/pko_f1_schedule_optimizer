@@ -17,11 +17,11 @@ public class StreamCalculator implements ConstraintProvider {
                 maxThreeStagesInARow(constraintFactory),
                 noStagesDuringOffWeeks(constraintFactory),
 
-                costIncomeDifferenceConstraint(constraintFactory),
+                //costIncomeDifferenceConstraint(constraintFactory),
                 weekDifferenceConstraint(constraintFactory),
-                //stageSequenceConstraint(constraintFactory),
-                minimizeTravelDistance(constraintFactory),
-                minimizeTravelEmissions(constraintFactory),
+                //minimizeTravelDistance(constraintFactory),
+                //minimizeTravelEmissions(constraintFactory),
+                minimizeTravelCosts(constraintFactory),
                 maximizeAttendanceAndIncome(constraintFactory),
                 balancedDistribution(constraintFactory),
         };
@@ -87,12 +87,13 @@ public class StreamCalculator implements ConstraintProvider {
                 .asConstraint("Week gap more that 3 weeks between two Grand Prix");
     }
 
-    public Constraint stageSequenceConstraint(ConstraintFactory constraintFactory) {
-        return constraintFactory
-                .forEach(Stage.class)
-                .filter(stage -> stage.getNext() != null && stage.getWeek() >= stage.getNext().getWeek())
-                .penalize(HardSoftScore.ONE_HARD) // Penalize if a stage is scheduled in the same week or after its "next" stage
-                .asConstraint("stageSequenceConstraint");
+    public Constraint minimizeTravelCosts(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(Stage.class)
+                .penalize(HardSoftScore.ONE_SOFT, stage -> (int) Math.round(
+                        Calculations.getStageTravelDistance(stage) *
+                        (GlobalConstants.pricePerKilometer + GlobalConstants.emissionsPricePerKilometer() + Calculations.getCargoCost()) *
+                        GlobalConstants.estimatedEmployeeAmount / GlobalConstants.priceDelimiter
+                )).asConstraint("Minimize Travel Costs");
     }
 
     public Constraint minimizeTravelDistance(ConstraintFactory constraintFactory) {

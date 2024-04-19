@@ -52,6 +52,7 @@
   
   .schedule-content, /* This is the updated class */
   .score-explanation,
+  .schedule-data,
   .map-block {
     border: 1px solid #ddd;
     padding: 16px;
@@ -131,3 +132,6 @@
     /* Remove the max-width if you have set it previously */
   }
   
+  .schedule-data p {
+    text-align: center;
+  }

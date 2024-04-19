@@ -61,4 +61,12 @@ public class Calculations {
 
         return (stageIncome - stageCost) / GlobalConstants.priceDelimiter;
     }
+
+    public static Boolean isStageAtOffWeek(Stage stage) {
+        return stage.getWeek() >= GlobalConstants.getOffWeekStart() && stage.getWeek() <= GlobalConstants.getOffWeekEnd();
+    }
+
+    public static  Double getCargoCost() {
+        return (GlobalConstants.cargoWeight * GlobalConstants.cargoPricePerKm);
+    }
 }

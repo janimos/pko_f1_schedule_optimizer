@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.lu.df.formula1.domain.Location;
 
-
 public class GlobalConstants {
     @Getter
     private static int startWeek;
@@ -50,7 +49,7 @@ public class GlobalConstants {
 
     // Data source: https://www.dw.com/en/trains-vs-planes-whats-the-real-cost-of-travel/a-45209552
     private static final Double emissionsPricePerTon = 38.69;
-    private static final Double emissionsKgPerKilometer = 0.32;
+    public static final Double emissionsKgPerKilometer = 0.32;
 
     public static Double emissionsPricePerKilometer() {
         return emissionsKgPerKilometer * (emissionsPricePerTon / 1000);
@@ -62,4 +61,14 @@ public class GlobalConstants {
     public static final int estimatedEmployeeAmount = 3000; // Assumption, all teams have around 600-700 employees at GP + number of Formula 1 and FIA employees
 
     public static final int penaltyFactor = 5;
+
+    public static final int toleranceThreshold = 1; // or any other appropriate value
+
+    public static final int teamCount = 10;
+
+    public static final Double cargoWeight = 1.5 * teamCount;
+
+    public static final Double cargoPricePerKm = 0.0403;
+
+
 }

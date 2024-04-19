@@ -15,18 +15,21 @@
 
     <!-- Configure the optimization algorithms (optional) -->
     <termination>
-        <secondsSpentLimit>5</secondsSpentLimit>
+        <secondsSpentLimit>30</secondsSpentLimit>
+        <!--<bestScoreFeasible>1</bestScoreFeasible>-->
     </termination>
 
     <constructionHeuristic />
 
     <localSearch>
-        <changeMoveSelector />
+        <unionMoveSelector>
+            <changeMoveSelector />
+        </unionMoveSelector>
         <acceptor>
-            <valueTabuSize>2</valueTabuSize>
+            <lateAcceptanceSize>500</lateAcceptanceSize>
         </acceptor>
         <forager>
-            <acceptedCountLimit>1000</acceptedCountLimit>
+            <acceptedCountLimit>5</acceptedCountLimit>
         </forager>
     </localSearch>
 

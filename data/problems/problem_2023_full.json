@@ -1,5 +1,5 @@
 {
-  "solutionId" : "37",
+  "solutionId" : "7",
   "score" : null,
   "locationList" : [ {
     "address" : "Bahrain International Circuit, Sakhir, Bahrain",
@@ -335,6 +335,6 @@
   } ],
   "startWeek" : 0,
   "endWeek" : 40,
-  "offWeekStart" : 22,
-  "offWeekEnd" : 25
+  "offWeekStart" : 21,
+  "offWeekEnd" : 24
 }

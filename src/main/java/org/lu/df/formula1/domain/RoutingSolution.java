@@ -55,7 +55,7 @@ public class RoutingSolution {
     @JsonIgnore
     public CountableValueRange<Integer> getWeekRange() {
         // Dynamically generate the range based on startWeek and endWeek
-        return ValueRangeFactory.createIntValueRange(this.startWeek, this.endWeek);
+        return ValueRangeFactory.createIntValueRange(GlobalConstants.getStartWeek(), GlobalConstants.getEndWeek());
     }
 
     public void printData(){
@@ -114,12 +114,6 @@ public class RoutingSolution {
         }
 
         RoutingSolution problem = new RoutingSolution();
-
-        problem.setStartWeek(GlobalConstants.getStartWeek());
-        problem.setEndWeek(GlobalConstants.getEndWeek());
-
-        problem.setOffWeekStart(GlobalConstants.getOffWeekStart());
-        problem.setOffWeekEnd(GlobalConstants.getOffWeekEnd());
 
         Random randomizer = new Random();
 

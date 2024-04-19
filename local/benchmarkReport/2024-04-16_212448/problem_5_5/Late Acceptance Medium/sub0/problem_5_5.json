@@ -1,0 +1,85 @@
+{
+  "solutionId" : "32",
+  "score" : "0hard/1265soft",
+  "locationList" : [ {
+    "address" : "Bahrain International Circuit, Sakhir, Bahrain",
+    "latitude" : 26.0,
+    "longitude" : 50.0
+  }, {
+    "address" : "Miami International Autodrome, Miami, Florida, USA",
+    "latitude" : 25.0,
+    "longitude" : -80.0
+  }, {
+    "address" : "Silverstone Circuit, Silverstone, United Kingdom",
+    "latitude" : 52.0,
+    "longitude" : -1.0
+  }, {
+    "address" : "Monza Circuit, Monza, Italy",
+    "latitude" : 45.0,
+    "longitude" : 9.0
+  }, {
+    "address" : "Suzuka International Racing Course, Suzuka, Japan",
+    "latitude" : 34.0,
+    "longitude" : 136.0
+  } ],
+  "stageList" : [ {
+    "name" : "Bahrain Grand Prix",
+    "location" : {
+      "address" : "Bahrain International Circuit, Sakhir, Bahrain",
+      "latitude" : 26.0,
+      "longitude" : 50.0
+    },
+    "attendance" : [ 99500.0, 100250.0, 95600.0, 94300.0, 98750.0 ],
+    "week" : 0,
+    "next" : "Miami Grand Prix",
+    "previous" : "Miami Grand Prix"
+  }, {
+    "name" : "Miami Grand Prix",
+    "location" : {
+      "address" : "Miami International Autodrome, Miami, Florida, USA",
+      "latitude" : 25.0,
+      "longitude" : -80.0
+    },
+    "attendance" : [ 250000.0, 270000.0, 260000.0, 275000.0, 265000.0 ],
+    "week" : 1,
+    "next" : "Italian Grand Prix",
+    "previous" : "Bahrain Grand Prix"
+  }, {
+    "name" : "British Grand Prix",
+    "location" : {
+      "address" : "Silverstone Circuit, Silverstone, United Kingdom",
+      "latitude" : 52.0,
+      "longitude" : -1.0
+    },
+    "attendance" : [ 265000.0, 390000.0, 480000.0, 475000.0, 455000.0 ],
+    "week" : 3,
+    "next" : "Japanese Grand Prix",
+    "previous" : "Italian Grand Prix"
+  }, {
+    "name" : "Italian Grand Prix",
+    "location" : {
+      "address" : "Monza Circuit, Monza, Italy",
+      "latitude" : 45.0,
+      "longitude" : 9.0
+    },
+    "attendance" : [ 275000.0, 250000.0, 310000.0, 305000.0, 320000.0 ],
+    "week" : 2,
+    "next" : "Miami Grand Prix",
+    "previous" : "Miami Grand Prix"
+  }, {
+    "name" : "Japanese Grand Prix",
+    "location" : {
+      "address" : "Suzuka International Racing Course, Suzuka, Japan",
+      "latitude" : 34.0,
+      "longitude" : 136.0
+    },
+    "attendance" : [ 75000.0, 150000.0, 175000.0, 195000.0, 200000.0 ],
+    "week" : 4,
+    "next" : "Miami Grand Prix",
+    "previous" : "Miami Grand Prix"
+  } ],
+  "startWeek" : 0,
+  "endWeek" : 5,
+  "offWeekStart" : -1,
+  "offWeekEnd" : -1
+}

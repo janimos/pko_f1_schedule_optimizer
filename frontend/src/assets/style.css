@@ -1,0 +1,137 @@
+  .badge {
+    padding: 5px;
+    color: white;
+  }
+  
+  .bg-success {
+    background-color: green;
+    border-radius: 4px;
+  }
+  
+  .bg-danger {
+    background-color: red;
+    border-radius: 4px;
+  }
+  
+  .schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 16px;
+  }
+  
+  .schedule-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Left side 3fr and right side 1fr */
+    gap: 16px;
+  }
+  
+  .grand-prix-schedule {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+
+  .grand-prix-schedule th,
+  .grand-prix-schedule td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .grand-prix-schedule th {
+    background-color: #f3f3f3;
+    text-align: center
+  }
+  
+  .schedule-content, /* This is the updated class */
+  .score-explanation,
+  .schedule-data,
+  .map-block {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .score-content {
+    text-align: left;
+  }
+  
+  .score-explanation-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 16px;
+  }
+  
+  .score-explanation-table th,
+  .score-explanation-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .score-explanation-table th {
+    background-color: #f3f3f3;
+    text-align: center
+  }
+  
+  .score-explanation-table ul {
+    list-style: none;
+    padding: 0.5%;
+    margin: 0;
+  }
+
+  .score-explanation-table ul li {
+    list-style: none;
+    padding: 0.5%;
+    margin: 0;
+  }
+  
+  .grand-prix-schedule td:nth-child(1),
+  .grand-prix-schedule td:nth-child(4),
+  .score-explanation-table td:nth-child(1),
+  .score-explanation-table td:nth-child(2) {
+    text-align: center
+  }
+  
+  .schedule-content,
+  .map-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grand-prix-schedule-container,
+  .map-content {
+    flex: 1;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .schedule-content {
+    /* This will make the schedule-content only take up as much space as needed for its content */
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: auto; /* Or set to the width that you want it to have */
+  }
+  
+  .map-block {
+    /* This will allow the map-block to grow and take the remaining space */
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%; /* This will make sure it takes the remaining space */
+    /* Remove the max-width if you have set it previously */
+  }
+  
+  .schedule-data p {
+    text-align: center;
+  }

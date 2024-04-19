@@ -1,102 +1,111 @@
 <template>
-  <div>
-    <div id="score_container">
-      <span :class="scoreBadge" v-html="scoreText"></span>
+  <div class="schedule-container">
+    <h2 class="schedule-title" v-html="'Schedule #' + solutionId"></h2>
+    <div class="main-content">
+      <section class="schedule-content">
+        <div class="grand-prix-schedule-container">
+          <h3>Grand Prix Schedule</h3>
+          <table class="grand-prix-schedule">
+            <thead>
+            <tr>
+              <th>Week</th>
+              <th>Grand Prix</th>
+              <th>Track</th>
+              <th>Attendance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="stage in stages" :key="stage.name">
+              <td>{{ stage.week }}</td>
+              <td>{{ stage.name }}</td>
+              <td>{{ stage.location.address }}</td>
+              <td>{{ stage.attendance[stage.week] }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <aside class="map-block">
+        <h3>Grand Prix Schedule Map</h3>
+        <div class="map-content">
+          <l-map ref="map" v-model:zoom="zoom" :center="getCenter()">
+            <l-tile-layer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              layer-type="base"
+              name="OpenStreetMap"
+            ></l-tile-layer>
+            <l-marker v-for="marker in markers" :key="marker.stageName" :lat-lng="marker.latLng">
+              <l-tooltip>{{ marker.stageName }}</l-tooltip>
+            </l-marker>
+            <l-polyline v-for="(line, index) in polylines" :key="index" :lat-lngs="line" :color="'blue'"></l-polyline>
+          </l-map>
+        </div>
+      </aside>
     </div>
-    <div id="schedule_container">
-      <a v-for="stage in stages" :key="stage.name"
-         data-bs-toggle="popover"
-         :data-bs-html="true"
-         :data-bs-content="getEntityPopoverContent(stage.name)"
-         :data-bs-original-title="stage.name"
-         v-html="stageDisplay(stage)"></a>
-    </div>
+    <section class="schedule-data">
+      <h3>Schedule details</h3>
+      <p>Schedule income: {{ scheduleData.income }} EUR</p>
+      <p>Schedule costs: {{ scheduleData.costs }} EUR</p>
+      <p>Schedule total income: {{ scheduleData.totalIncome }} EUR</p>
+      <p>Schedule traveling distance: {{ scheduleData.distance }} KM</p>
+      <p>Schedule traveling emissions: {{ scheduleData.emissions }} KG</p>
+    </section>
+    <section class="score-explanation">
+        <!-- Content for the Hard/Soft Score Explanation -->
+        <h3>Hard/Soft Score Explanation</h3>
+        <div class="score-content">
+          <p>Total Hard/Soft Score: <span :class="scoreBadge" v-html="scoreText"></span></p>
+        </div>
+        <div class="score-explanation-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Grand Prix</th>
+                <th>Total Score</th>
+                <th>Constraints</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="indictment in indictmentMap" :key="indictment.indictedObjectID">
+                <td>{{ indictment.indictedObjectID }}</td>
+                <td>{{ indictment.score }}</td>
+                <td>
+                  <ul>
+                    <li v-for="match in indictment.constraintMatches" :key="match.constraintName">{{ getScore(match.constraintName, match.score) }}</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </section>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import {ref, onMounted} from 'vue';
-import {useRoute} from 'vue-router';
+import { useScheduleDetails} from "@/logic/ScheduleDetailsLogic";
+import "../assets/style.css";
 
-export const useScheduleDetails = () => {
-  const route = useRoute();
-  const solutionId = route.params.solutionId;
-  const scoreText = ref('');
-  const scoreBadge = ref('');
-  const stages = ref([]);
-  const indictmentMap = ref({});
-
-  const getHardScore = score => score.slice(0, score.indexOf("hard"));
-
-  /*const getScorePopoverContent = constraintList => {
-    let popoverContent = "";
-    constraintList.forEach(constraint => {
-      popoverContent += getHardScore(constraint.score) === 0 ?
-          `${constraint.name} : ${constraint.score}<br>` :
-          `<b>${constraint.name} : ${constraint.score}</b><br>`;
-    });
-    return popoverContent;
-  };*/
-
-  const getEntityPopoverContent = entityId => {
-    const indictment = indictmentMap.value[entityId];
-    if (!indictment) return '';
-    let popoverContent = `Total score: <b>${indictment.score}</b> (${indictment.matchCount})<br>`;
-    indictment.constraintMatches.forEach(match => {
-      popoverContent += getHardScore(match.score) === 0 ?
-          `${match.constraintName} : ${match.score}<br>` :
-          `<b>${match.constraintName} : ${match.score}</b><br>`;
-    });
-    return popoverContent;
-  };
-
-  const stageDisplay = stage => {
-    return `<span class="${indictmentMap.value[stage.name] == null || getHardScore(indictmentMap.value[stage.name].score) === 0 ? 'badge bg-success' : 'badge bg-danger'}">${stage.name}</span>`;
-  };
-
-  onMounted(() => {
-    axios.get(`/schedules/score?id=${solutionId}`).then(response => {
-      const analysis = response.data;
-      scoreText.value = analysis.score;
-      scoreBadge.value = getHardScore(analysis.score) === 0 ? 'badge bg-success' : 'badge bg-danger';
-    });
-
-    axios.get(`/schedules/solution?id=${solutionId}`).then(response => {
-      const solution = response.data;
-      stages.value = solution.stageList;
-
-      axios.get(`/schedules/indictments?id=${solutionId}`).then(response => {
-        const indictments = response.data;
-        indictments.forEach(indictment => {
-          indictmentMap.value[indictment.indictedObjectID] = indictment;
-        });
-      });
-    });
-  });
-
-  return {scoreText, scoreBadge, stages, getEntityPopoverContent, stageDisplay};
-};
+import "leaflet/dist/leaflet.css";
+import { LMap, LMarker, LPolyline, LTileLayer, LTooltip } from "@vue-leaflet/vue-leaflet";
 
 export default {
   name: 'ScheduleDetails',
   setup() {
     return useScheduleDetails();
-  }
+  },
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LTooltip,
+    LPolyline
+  },
+  data() {
+    return {
+      zoom: 10,
+    };
+  },
 };
 </script>
-
-<style scoped>
-.badge {
-  padding: 5px;
-  color: white;
-}
-
-.bg-success {
-  background-color: green;
-}
-
-.bg-danger {
-  background-color: red;
-}
-</style>

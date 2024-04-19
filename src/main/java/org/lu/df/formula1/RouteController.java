@@ -11,4 +11,9 @@ public class RouteController {
         // Forward to home page so that route is handled by Vue Router
         return "forward:/index.html";
     }
+
+    @RequestMapping(value = "/schedule/{path:[^\\.]*}")
+    public String forward() {
+        return "forward:/";
+    }
 }
